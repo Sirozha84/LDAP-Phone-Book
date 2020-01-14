@@ -21,7 +21,7 @@ namespace LDAP_Phone_Book
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            string[] strings = System.IO.File.ReadAllText("c:\\Users\\SG\\Desktop\\ist_users.csv").Split('\r');
+            string[] strings = System.IO.File.ReadAllText("ist_users.csv").Split('\r');
             book = new List<Contact>();
             for (int i = 2; i < strings.Count(); i++)
             {
