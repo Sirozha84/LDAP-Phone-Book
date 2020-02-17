@@ -13,7 +13,6 @@ namespace LDAP_Phone_Book
     public partial class FormMain : Form
     {
         List<Contact> book;
-
         public FormMain()
         {
             InitializeComponent();
@@ -21,18 +20,27 @@ namespace LDAP_Phone_Book
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            string[] strings = System.IO.File.ReadAllText("ist_users.csv").Split('\r');
-            book = new List<Contact>();
-            for (int i = 2; i < strings.Count(); i++)
+            try
             {
-                strings[i] = strings[i].Replace("\",\"", ",");
-                strings[i] = strings[i].Replace("\n", "");
-                strings[i] = strings[i].Replace("\"", "");
-                string[] s = strings[i].Split(',');
-                if (s.Count() > 5)
-                    book.Add(new Contact(s[3], s[4], s[0]));
+                string[] strings = System.IO.File.ReadAllText("book.csv").Split('\r');
+                book = new List<Contact>();
+                for (int i = 2; i < strings.Count(); i++)
+                {
+                    strings[i] = strings[i].Replace("\",\"", ",");
+                    strings[i] = strings[i].Replace("\n", "");
+                    strings[i] = strings[i].Replace("\"", "");
+                    string[] s = strings[i].Split(',');
+                    if (s.Count() > 5)
+                        book.Add(new Contact(s[3], s[4], s[0]));
+                }
+                Redraw();
             }
-            Redraw();
+            catch
+            {
+                MessageBox.Show("Не удалось прочитать файл book.csv, создайте его и перезапустите программу.",
+                    "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Close();
+            }
         }
 
         private void TextBoxSearch_TextChanged(object sender, EventArgs e)
@@ -57,5 +65,19 @@ namespace LDAP_Phone_Book
             }
             listViewBook.EndUpdate();
         }
+
+        #region Меню
+
+        private void menuExit_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+        private void menuAbout_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("LDAP Phone Book\n\nВерсия 1.0 (17.02.2020)\n\nАвтор: Сергей Гордеев", "LDAP Phone Book");
+        }
+
+        #endregion
+
     }
 }
