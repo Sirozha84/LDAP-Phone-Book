@@ -12,7 +12,6 @@ namespace LDAP_Phone_Book
 {
     public partial class FormMain : Form
     {
-        List<Contact> book;
         public FormMain()
         {
             InitializeComponent();
@@ -20,27 +19,8 @@ namespace LDAP_Phone_Book
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            try
-            {
-                string[] strings = System.IO.File.ReadAllText("book.csv").Split('\r');
-                book = new List<Contact>();
-                for (int i = 2; i < strings.Count(); i++)
-                {
-                    strings[i] = strings[i].Replace("\",\"", ",");
-                    strings[i] = strings[i].Replace("\n", "");
-                    strings[i] = strings[i].Replace("\"", "");
-                    string[] s = strings[i].Split(',');
-                    if (s.Count() > 5)
-                        book.Add(new Contact(s[3], s[4], s[0]));
-                }
-                Redraw();
-            }
-            catch
-            {
-                MessageBox.Show("Не удалось прочитать файл book.csv, создайте его и перезапустите программу.",
-                    "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Close();
-            }
+            if (!Data.Load()) return;
+            Redraw();
         }
 
         private void TextBoxSearch_TextChanged(object sender, EventArgs e)
@@ -52,14 +32,14 @@ namespace LDAP_Phone_Book
         {
             listViewBook.BeginUpdate();
             listViewBook.Items.Clear();
-            foreach (Contact cn in book)
+            foreach (User user in Data.book)
             {
                 //if (cn.name.ToLower().Contains(textBoxSearch.Text.ToLower()))
-                if (cn.name.ToLower().Substring(0, textBoxSearch.Text.Length) == textBoxSearch.Text.ToLower())
+                if (user.name.ToLower().Substring(0, textBoxSearch.Text.Length) == textBoxSearch.Text.ToLower())
                 {
-                    ListViewItem item = new ListViewItem(cn.name);
-                    item.SubItems.Add(cn.phone);
-                    item.SubItems.Add(cn.email);
+                    ListViewItem item = new ListViewItem(user.name);
+                    item.SubItems.Add(user.phoneW);
+                    item.SubItems.Add(user.mail);
                     listViewBook.Items.Add(item);
                 }
             }
