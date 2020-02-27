@@ -13,6 +13,8 @@ namespace LDAP_Phone_Book
         public string mail;
         public string phoneW, phoneG, phoneM;
 
+        public User() { }
+
         public User(string name, string company, string dep, string mail, string phoneW, string phoneG, string phoneM)
         {
             this.name = name;

@@ -50,7 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contact.cs" />
+    <Compile Include="Data.cs" />
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
