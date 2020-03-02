@@ -75,7 +75,8 @@ namespace LDAP_Phone_Book
             //Читаем AD
             DirectoryEntry CurrentDomain = new DirectoryEntry();
             Console.WriteLine(CurrentDomain.Name);
-            var ds = new DirectorySearcher("(&(objectClass=person)(objectClass=organizationalPerson)(objectClass=user))");
+            //var ds = new DirectorySearcher("(&(objectClass=person)(objectClass=organizationalPerson)(objectClass=user))");
+            var ds = new DirectorySearcher("(&(objectClass=person)(objectClass=organizationalPerson)(objectCategory=user))");
             ds.CacheResults = true;
             ds.PageSize = 1000;
 
