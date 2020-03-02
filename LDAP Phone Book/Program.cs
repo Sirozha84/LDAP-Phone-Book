@@ -8,6 +8,9 @@ namespace LDAP_Phone_Book
 {
     static class Program
     {
+
+        public static string Version = "1.3 (02.03.2020)";
+
         /// <summary>
         /// Главная точка входа для приложения.
         /// </summary>
@@ -24,7 +27,6 @@ namespace LDAP_Phone_Book
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FormMain());
         }
-
 
     }
 }

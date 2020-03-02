@@ -37,8 +37,13 @@ namespace LDAP_Phone_Book
             listViewBook.Items.Clear();
             foreach (User user in Data.book)
             {
-                //if (user.name.ToLower().Substring(0, textBoxSearch.Text.Length) == textBoxSearch.Text.ToLower())
-                if (user.name.ToLower().Contains(textBoxSearch.Text.ToLower()) &
+                string search = textBoxSearch.Text.ToLower();
+                if ( (user.name.ToLower().Contains(search) |
+                      user.post.ToLower().Contains(search) |
+                      user.phoneW.ToLower().Contains(search) |
+                      user.phoneG.ToLower().Contains(search) |
+                      user.phoneM.ToLower().Contains(search) |
+                      user.mail.ToLower().Contains(search)) &
                     (comboBoxComps.SelectedValue.ToString() == "Все" || comboBoxComps.SelectedValue.ToString() == user.company) &
                     (comboBoxDeps.SelectedValue.ToString() == "Все" || comboBoxDeps.SelectedValue.ToString() == user.dep))
                 {
@@ -51,12 +56,57 @@ namespace LDAP_Phone_Book
                     ListViewItem item = new ListViewItem(user.name);
                     item.SubItems.Add(user.company);
                     item.SubItems.Add(user.dep);
+                    item.SubItems.Add(user.post);
                     item.SubItems.Add(phones);
                     item.SubItems.Add(user.mail);
+                    item.Tag = user;
                     listViewBook.Items.Add(item);
                 }
             }
             listViewBook.EndUpdate();
+        }
+        private void listViewBook_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listViewBook.SelectedItems.Count > 0)
+            {
+                User user = (User)listViewBook.SelectedItems[0].Tag;
+                if (user.phoneW != "")
+                {
+                    menuCopyW.Visible = true;
+                    menuCopyW.Text = "Скопировать рабочий номер: " + user.phoneW;
+                }
+                if (user.phoneG != "")
+                {
+                    menuCopyG.Visible = true;
+                    menuCopyG.Text = "Скопировать городской номер: " + user.phoneG;
+                }
+                if (user.phoneM != "")
+                {
+                    menuCopyM.Visible = true;
+                    menuCopyM.Text = "Скопировать мобильный номер: " + user.phoneM;
+                }
+                if (user.mail != "")
+                {
+                    menuSendMail.Visible = true;
+                    menuSendMail.Text = "Отправить письмо на " + user.mail;
+                    menuCopyMail.Visible = true;
+                    menuCopyMail.Text = "Скопировать Email: " + user.mail;
+                }
+            }
+            else
+            {
+                menuSendMail.Visible = true;
+                menuCopyW.Visible = false;
+                menuCopyG.Visible = false;
+                menuCopyM.Visible = false;
+                menuCopyMail.Visible = false;
+            }
+        }
+        private void buttonReset_Click(object sender, EventArgs e)
+        {
+            textBoxSearch.Text = "";
+            comboBoxComps.SelectedIndex = 0;
+            comboBoxDeps.SelectedIndex = 0;
         }
 
         #region Меню
@@ -74,22 +124,40 @@ namespace LDAP_Phone_Book
 
         private void menuAbout_Click(object sender, EventArgs e)
         {
-            /*Верися 1.2 (27.02.2020)
-             * * Форсированное обновление книги
-             *Версия 1.1 (25.02.2020)
-             * * Самостоятельное чтение книги без сторонних средств
-             * * Чтение трёх видов телефонных номеров
-             * * Фильтры по организациям и подразделениям
-             * * Поиск по имени или отчеству
-             * Версия 1.0 (17.02.2020)
-             * * Отображение списка ФИО, номера телефона и электронной почты
-             * * Поиск по фамилии
-             */
-            MessageBox.Show("LDAP Phone Book\n\nВерсия 1.2 (27.02.2020)\n\nАвтор: Сергей Гордеев", "LDAP Phone Book");
+            FormAbout form = new FormAbout();
+            form.ShowDialog();
         }
+
 
         #endregion
 
+        #region Контекстное меню
+        private void menuSendMail_Click(object sender, EventArgs e)
+        {
+            User user = (User)listViewBook.SelectedItems[0].Tag;
+            System.Diagnostics.Process.Start("mailto:" + user.mail);
+        }
+        private void menuCopyW_Click(object sender, EventArgs e)
+        {
+            User user = (User)listViewBook.SelectedItems[0].Tag;
+            Clipboard.SetText(user.phoneW);
+        }
+        private void menuCopyG_Click(object sender, EventArgs e)
+        {
+            User user = (User)listViewBook.SelectedItems[0].Tag;
+            Clipboard.SetText(user.phoneG);
+        }
+        private void menuCopyM_Click(object sender, EventArgs e)
+        {
+            User user = (User)listViewBook.SelectedItems[0].Tag;
+            Clipboard.SetText(user.phoneM);
+        }
+        private void menuCopyMail_Click(object sender, EventArgs e)
+        {
+            User user = (User)listViewBook.SelectedItems[0].Tag;
+            Clipboard.SetText(user.mail);
+        }
+        #endregion
 
     }
 }
