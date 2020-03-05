@@ -39,6 +39,8 @@
             this.columnHeaderNum = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderEmail = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.menuSendMail = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuSep1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuCopyW = new System.Windows.Forms.ToolStripMenuItem();
             this.menuCopyG = new System.Windows.Forms.ToolStripMenuItem();
             this.menuCopyM = new System.Windows.Forms.ToolStripMenuItem();
@@ -56,8 +58,9 @@
             this.comboBoxDeps = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.buttonReset = new System.Windows.Forms.Button();
-            this.menuSendMail = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuSep1 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuSep2 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuSendReport = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuNews = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenu.SuspendLayout();
             this.menu.SuspendLayout();
             this.SuspendLayout();
@@ -89,7 +92,7 @@
             this.listViewBook.HideSelection = false;
             this.listViewBook.Location = new System.Drawing.Point(12, 53);
             this.listViewBook.Name = "listViewBook";
-            this.listViewBook.Size = new System.Drawing.Size(910, 447);
+            this.listViewBook.Size = new System.Drawing.Size(910, 458);
             this.listViewBook.TabIndex = 4;
             this.listViewBook.UseCompatibleStateImageBehavior = false;
             this.listViewBook.View = System.Windows.Forms.View.Details;
@@ -133,40 +136,55 @@
             this.menuCopyW,
             this.menuCopyG,
             this.menuCopyM,
-            this.menuCopyMail});
+            this.menuCopyMail,
+            this.menuSep2,
+            this.menuSendReport});
             this.contextMenu.Name = "contextMenu";
-            this.contextMenu.Size = new System.Drawing.Size(255, 142);
+            this.contextMenu.Size = new System.Drawing.Size(255, 148);
+            // 
+            // menuSendMail
+            // 
+            this.menuSendMail.Enabled = false;
+            this.menuSendMail.Name = "menuSendMail";
+            this.menuSendMail.Size = new System.Drawing.Size(254, 22);
+            this.menuSendMail.Text = "Отправить письмо";
+            this.menuSendMail.Click += new System.EventHandler(this.menuSendMail_Click);
+            // 
+            // menuSep1
+            // 
+            this.menuSep1.Name = "menuSep1";
+            this.menuSep1.Size = new System.Drawing.Size(251, 6);
             // 
             // menuCopyW
             // 
+            this.menuCopyW.Enabled = false;
             this.menuCopyW.Name = "menuCopyW";
             this.menuCopyW.Size = new System.Drawing.Size(254, 22);
             this.menuCopyW.Text = "Скопировать внутренний номер";
-            this.menuCopyW.Visible = false;
             this.menuCopyW.Click += new System.EventHandler(this.menuCopyW_Click);
             // 
             // menuCopyG
             // 
+            this.menuCopyG.Enabled = false;
             this.menuCopyG.Name = "menuCopyG";
             this.menuCopyG.Size = new System.Drawing.Size(254, 22);
             this.menuCopyG.Text = "Скопировать городской номер";
-            this.menuCopyG.Visible = false;
             this.menuCopyG.Click += new System.EventHandler(this.menuCopyG_Click);
             // 
             // menuCopyM
             // 
+            this.menuCopyM.Enabled = false;
             this.menuCopyM.Name = "menuCopyM";
             this.menuCopyM.Size = new System.Drawing.Size(254, 22);
             this.menuCopyM.Text = "Скопировать мобильный номер";
-            this.menuCopyM.Visible = false;
             this.menuCopyM.Click += new System.EventHandler(this.menuCopyM_Click);
             // 
             // menuCopyMail
             // 
+            this.menuCopyMail.Enabled = false;
             this.menuCopyMail.Name = "menuCopyMail";
             this.menuCopyMail.Size = new System.Drawing.Size(254, 22);
             this.menuCopyMail.Text = "Скопировать Email";
-            this.menuCopyMail.Visible = false;
             this.menuCopyMail.Click += new System.EventHandler(this.menuCopyMail_Click);
             // 
             // menu
@@ -215,6 +233,7 @@
             // menuHelp
             // 
             this.menuHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuNews,
             this.menuAbout});
             this.menuHelp.Name = "menuHelp";
             this.menuHelp.Size = new System.Drawing.Size(65, 20);
@@ -223,7 +242,7 @@
             // menuAbout
             // 
             this.menuAbout.Name = "menuAbout";
-            this.menuAbout.Size = new System.Drawing.Size(149, 22);
+            this.menuAbout.Size = new System.Drawing.Size(192, 22);
             this.menuAbout.Text = "О программе";
             this.menuAbout.Click += new System.EventHandler(this.menuAbout_Click);
             // 
@@ -289,24 +308,30 @@
             this.buttonReset.UseVisualStyleBackColor = true;
             this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
             // 
-            // menuSendMail
+            // menuSep2
             // 
-            this.menuSendMail.Name = "menuSendMail";
-            this.menuSendMail.Size = new System.Drawing.Size(254, 22);
-            this.menuSendMail.Text = "Отправить письмо на";
-            this.menuSendMail.Visible = false;
-            this.menuSendMail.Click += new System.EventHandler(this.menuSendMail_Click);
+            this.menuSep2.Name = "menuSep2";
+            this.menuSep2.Size = new System.Drawing.Size(251, 6);
             // 
-            // menuSep1
+            // menuSendReport
             // 
-            this.menuSep1.Name = "menuSep1";
-            this.menuSep1.Size = new System.Drawing.Size(251, 6);
+            this.menuSendReport.Name = "menuSendReport";
+            this.menuSendReport.Size = new System.Drawing.Size(254, 22);
+            this.menuSendReport.Text = "Сообщить о новом контакте";
+            this.menuSendReport.Click += new System.EventHandler(this.menuSendReport_Click);
+            // 
+            // menuNews
+            // 
+            this.menuNews.Name = "menuNews";
+            this.menuNews.Size = new System.Drawing.Size(192, 22);
+            this.menuNews.Text = "Новости обновлений";
+            this.menuNews.Click += new System.EventHandler(this.menuNews_Click);
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(934, 512);
+            this.ClientSize = new System.Drawing.Size(934, 523);
             this.Controls.Add(this.buttonReset);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.comboBoxDeps);
@@ -318,9 +343,11 @@
             this.Controls.Add(this.menu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menu;
+            this.MinimumSize = new System.Drawing.Size(950, 200);
             this.Name = "FormMain";
             this.Text = "LDAP Phone Book";
             this.Load += new System.EventHandler(this.FormMain_Load);
+            this.Shown += new System.EventHandler(this.FormMain_Shown);
             this.contextMenu.ResumeLayout(false);
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
@@ -359,6 +386,9 @@
         private System.Windows.Forms.Button buttonReset;
         private System.Windows.Forms.ToolStripMenuItem menuSendMail;
         private System.Windows.Forms.ToolStripSeparator menuSep1;
+        private System.Windows.Forms.ToolStripSeparator menuSep2;
+        private System.Windows.Forms.ToolStripMenuItem menuSendReport;
+        private System.Windows.Forms.ToolStripMenuItem menuNews;
     }
 }
 

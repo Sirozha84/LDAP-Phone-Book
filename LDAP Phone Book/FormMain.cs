@@ -24,6 +24,11 @@ namespace LDAP_Phone_Book
             comboBoxDeps.DataSource = Data.deps;
             Redraw();
         }
+        private void FormMain_Shown(object sender, EventArgs e)
+        {
+            ShowNews();
+        }
+
 
         private void TextBoxSearch_TextChanged(object sender, EventArgs e) { Redraw(); }
         private void comboBoxComps_SelectedIndexChanged(object sender, EventArgs e) { Redraw(); }
@@ -72,34 +77,36 @@ namespace LDAP_Phone_Book
                 User user = (User)listViewBook.SelectedItems[0].Tag;
                 if (user.phoneW != "")
                 {
-                    menuCopyW.Visible = true;
-                    menuCopyW.Text = "Скопировать рабочий номер: " + user.phoneW;
+                    menuCopyW.Enabled = true;
+                    //menuCopyW.Text = "Скопировать рабочий номер: " + user.phoneW;
                 }
                 if (user.phoneG != "")
                 {
-                    menuCopyG.Visible = true;
-                    menuCopyG.Text = "Скопировать городской номер: " + user.phoneG;
+                    menuCopyG.Enabled = true;
+                    //menuCopyG.Text = "Скопировать городской номер: " + user.phoneG;
                 }
                 if (user.phoneM != "")
                 {
-                    menuCopyM.Visible = true;
-                    menuCopyM.Text = "Скопировать мобильный номер: " + user.phoneM;
+                    menuCopyM.Enabled = true;
+                    //menuCopyM.Text = "Скопировать мобильный номер: " + user.phoneM;
                 }
                 if (user.mail != "")
                 {
-                    menuSendMail.Visible = true;
-                    menuSendMail.Text = "Отправить письмо на " + user.mail;
-                    menuCopyMail.Visible = true;
-                    menuCopyMail.Text = "Скопировать Email: " + user.mail;
+                    menuSendMail.Enabled = true;
+                    //menuSendMail.Text = "Отправить письмо на " + user.mail;
+                    menuCopyMail.Enabled = true;
+                    //menuCopyMail.Text = "Скопировать Email: " + user.mail;
                 }
+                menuSendReport.Text = "Сообщить об ошибке";
             }
             else
             {
-                menuSendMail.Visible = true;
-                menuCopyW.Visible = false;
-                menuCopyG.Visible = false;
-                menuCopyM.Visible = false;
-                menuCopyMail.Visible = false;
+                menuSendMail.Enabled = false;
+                menuCopyW.Enabled = false;
+                menuCopyG.Enabled = false;
+                menuCopyM.Enabled = false;
+                menuCopyMail.Enabled = false;
+                menuSendReport.Text = "Сообщить о новом контакте";
             }
         }
         private void buttonReset_Click(object sender, EventArgs e)
@@ -107,6 +114,22 @@ namespace LDAP_Phone_Book
             textBoxSearch.Text = "";
             comboBoxComps.SelectedIndex = 0;
             comboBoxDeps.SelectedIndex = 0;
+        }
+
+        private void ShowNews()
+        {
+            if (Properties.Settings.Default.ShowTips < 1)
+            {
+                MessageBox.Show(
+                    "Здравствуйте!\n\n" +
+                    "Теперь вы можете отправить информацию об ошибках в справочнике или предложить добавить новый контакт.\n" +
+                    "Для этого нажмите правой кнопкой мыши на контакт и выберите пункт \"Сообщить об ошибке\", " +
+                    "или по пустому месту окна и выберите пункт \"Сообщить о новом контакте\".",
+                    "Новости  обновления");
+
+            }
+            Properties.Settings.Default.ShowTips = 1;
+            Properties.Settings.Default.Save();
         }
 
         #region Меню
@@ -120,6 +143,12 @@ namespace LDAP_Phone_Book
         {
             Data.LDAPRead();
             Redraw();
+        }
+
+        private void menuNews_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.ShowTips = 0;
+            ShowNews();
         }
 
         private void menuAbout_Click(object sender, EventArgs e)
@@ -157,6 +186,20 @@ namespace LDAP_Phone_Book
             User user = (User)listViewBook.SelectedItems[0].Tag;
             Clipboard.SetText(user.mail);
         }
+
+        private void menuSendReport_Click(object sender, EventArgs e)
+        {
+            string name = "";
+            if (listViewBook.SelectedItems.Count > 0)
+            {
+                User user = (User)listViewBook.SelectedItems[0].Tag;
+                name = user.name;
+            }
+            FormReport form = new FormReport(name);
+            form.ShowDialog();
+        }
+
+
         #endregion
 
     }
