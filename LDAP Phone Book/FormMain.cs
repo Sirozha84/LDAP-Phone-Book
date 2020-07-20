@@ -12,6 +12,7 @@ namespace LDAP_Phone_Book
 {
     public partial class FormMain : Form
     {
+        List<Contact> viewedContacts = new List<Contact>();
         public FormMain()
         {
             InitializeComponent();
@@ -20,8 +21,6 @@ namespace LDAP_Phone_Book
         private void FormMain_Load(object sender, EventArgs e)
         {
             Data.Load();
-            comboBoxComps.DataSource = Data.comps;
-            comboBoxDeps.DataSource = Data.deps;
             Redraw();
         }
         private void FormMain_Shown(object sender, EventArgs e)
@@ -36,11 +35,15 @@ namespace LDAP_Phone_Book
 
         void Redraw()
         {
-            if (comboBoxDeps.Items.Count == 0) return;
+            //Выпадающие списки с компаниями и подразделениями
+            comboBoxComps.DataSource = Data.comps;
+            comboBoxDeps.DataSource = Data.deps;
 
+            if (comboBoxDeps.Items.Count == 0) return;
+            viewedContacts.Clear();
             listViewBook.BeginUpdate();
             listViewBook.Items.Clear();
-            foreach (User user in Data.book)
+            foreach (Contact user in Data.book)
             {
                 string search = textBoxSearch.Text.ToLower();
                 if ( (user.name.ToLower().Contains(search) |
@@ -66,6 +69,7 @@ namespace LDAP_Phone_Book
                     item.SubItems.Add(user.mail);
                     item.Tag = user;
                     listViewBook.Items.Add(item);
+                    viewedContacts.Add(user);
                 }
             }
             listViewBook.EndUpdate();
@@ -74,7 +78,7 @@ namespace LDAP_Phone_Book
         {
             if (listViewBook.SelectedItems.Count > 0)
             {
-                User user = (User)listViewBook.SelectedItems[0].Tag;
+                Contact user = (Contact)listViewBook.SelectedItems[0].Tag;
                 if (user.phoneW != "")
                 {
                     menuCopyW.Enabled = true;
@@ -134,9 +138,20 @@ namespace LDAP_Phone_Book
 
         #region Меню
 
+        private void menuPrint_Click(object sender, EventArgs e)
+        {
+            Print.Start(viewedContacts);
+        }
+
         private void menuExit_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void menuUpdate_Click(object sender, EventArgs e)
+        {
+            Data.Load();
+            Redraw();
         }
 
         private void menuForceUpdate_Click(object sender, EventArgs e)
@@ -163,27 +178,27 @@ namespace LDAP_Phone_Book
         #region Контекстное меню
         private void menuSendMail_Click(object sender, EventArgs e)
         {
-            User user = (User)listViewBook.SelectedItems[0].Tag;
+            Contact user = (Contact)listViewBook.SelectedItems[0].Tag;
             System.Diagnostics.Process.Start("mailto:" + user.mail);
         }
         private void menuCopyW_Click(object sender, EventArgs e)
         {
-            User user = (User)listViewBook.SelectedItems[0].Tag;
+            Contact user = (Contact)listViewBook.SelectedItems[0].Tag;
             Clipboard.SetText(user.phoneW);
         }
         private void menuCopyG_Click(object sender, EventArgs e)
         {
-            User user = (User)listViewBook.SelectedItems[0].Tag;
+            Contact user = (Contact)listViewBook.SelectedItems[0].Tag;
             Clipboard.SetText(user.phoneG);
         }
         private void menuCopyM_Click(object sender, EventArgs e)
         {
-            User user = (User)listViewBook.SelectedItems[0].Tag;
+            Contact user = (Contact)listViewBook.SelectedItems[0].Tag;
             Clipboard.SetText(user.phoneM);
         }
         private void menuCopyMail_Click(object sender, EventArgs e)
         {
-            User user = (User)listViewBook.SelectedItems[0].Tag;
+            Contact user = (Contact)listViewBook.SelectedItems[0].Tag;
             Clipboard.SetText(user.mail);
         }
 
@@ -192,7 +207,7 @@ namespace LDAP_Phone_Book
             string name = "";
             if (listViewBook.SelectedItems.Count > 0)
             {
-                User user = (User)listViewBook.SelectedItems[0].Tag;
+                Contact user = (Contact)listViewBook.SelectedItems[0].Tag;
                 name = user.name;
             }
             FormReport form = new FormReport(name);

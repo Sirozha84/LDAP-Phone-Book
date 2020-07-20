@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 using System.Xml.Serialization;
 using System.Windows.Forms;
@@ -13,7 +10,7 @@ namespace LDAP_Phone_Book
 {
     static class Data
     {
-        static public List<User> book;
+        static public List<Contact> book;
         static public List<string> comps;
         static public List<string> deps;
 
@@ -21,13 +18,13 @@ namespace LDAP_Phone_Book
         {
             try
             {
-                var serializer = new XmlSerializer(typeof(List<User>));
+                var serializer = new XmlSerializer(typeof(List<Contact>));
                 using (var reader = new StreamReader("Book.xml"))
-                    book = (List<User>)serializer.Deserialize(reader);
+                    book = (List<Contact>)serializer.Deserialize(reader);
             }
             catch 
             {
-                book = new List<User>();
+                book = new List<Contact>();
             }
             PrepareFilters();
         }
@@ -37,7 +34,7 @@ namespace LDAP_Phone_Book
             book.Sort((o1, o2) => o1.name.CompareTo(o2.name));
             try
             {
-                var serializer = new XmlSerializer(typeof(List<User>));
+                var serializer = new XmlSerializer(typeof(List<Contact>));
                 using (var writer = new StreamWriter("Book.xml"))
                     serializer.Serialize(writer, book);
             }
@@ -50,18 +47,11 @@ namespace LDAP_Phone_Book
         static void PrepareFilters()
         {
             comps = new List<string>();
-            //comps.Add("Все");
             deps = new List<string>();
-            //deps.Add("Все");
-            bool find;
-            foreach (User user in book)
+            foreach (Contact user in book)
             {
-                find = false;
-                foreach (string comp in comps) if (user.company == comp) { find = true; break; }
-                if (!find & user.company != "") comps.Add(user.company);
-                find = false;
-                foreach (string dep in deps) if (user.dep == dep) { find = true; break; }
-                if (!find & user.dep != "") deps.Add(user.dep);
+                if (comps.Find(o => o == user.company) == null) comps.Add(user.company);
+                if (deps.Find(o => o == user.dep) == null) deps.Add(user.dep);
             }
             comps.Sort((o1, o2) => o1.CompareTo(o2));
             comps.Insert(0, "Все");
@@ -88,7 +78,7 @@ namespace LDAP_Phone_Book
 
             int s = 1;
             SearchResultCollection res = ds.FindAll();
-            Data.book = new List<User>();
+            Data.book = new List<Contact>();
             foreach (SearchResult item in res)
             {
                 using (var de = item.GetDirectoryEntry())
@@ -103,7 +93,7 @@ namespace LDAP_Phone_Book
                     try { phoneM = de.Properties["mobile"].Value.ToString(); } catch { phoneM = ""; }
 
                     if (mail != "" | phoneW != "" | phoneG != "" | phoneM != "")
-                        Data.book.Add(new User(name, company, departament, post, mail, phoneW, phoneG, phoneM));
+                        Data.book.Add(new Contact(name, company, departament, post, mail, phoneW, phoneG, phoneM));
                     s++;
                 }
             }

@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace LDAP_Phone_Book
 {
@@ -18,6 +10,11 @@ namespace LDAP_Phone_Book
             label2.Text = "Версия: " + Program.Version;
             richTextBoxHostory.Text =
                 //"• \n" +
+                "Версия 1.5 (в работе)\n\n" +
+                "• Печать телефонной книги\n" +
+                "• Добавлена возможность \"лёгкого\"обновления книги без перечитывания LDAP " +
+                "(например если кто-то уже перечитал LDAP, не обязательно это делать ещё раз, достаточно обновить только список)\n" +
+                "• Исправлено обновление списка компаний и подразделений при обновлении книги (обновлялись только при запуске приложения)\n\n" +
                 "Версия 1.4 (05.03.2020)\n\n" +
                 "• Возможность отправлять сообщения об ошибках и предложениях\n" +
                 "• Новости обновлений\n" +

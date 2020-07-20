@@ -1,21 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LDAP_Phone_Book
+﻿namespace LDAP_Phone_Book
 {
-    public class User
+    public class Contact
     {
         public string name;
         public string company, dep, post;
         public string mail;
         public string phoneW, phoneG, phoneM;
 
-        public User() { }
+        public Contact() { }
 
-        public User(string name, string company, string dep, string post, string mail, string phoneW, string phoneG, string phoneM)
+        public Contact(string name, string company, string dep, string post, string mail, string phoneW, string phoneG, string phoneM)
         {
             this.name = name;
             this.company = company;
