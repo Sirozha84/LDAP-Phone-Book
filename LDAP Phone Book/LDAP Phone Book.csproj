@@ -107,6 +107,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Phone Book.ico" />
+    <None Include="Resources\search.png" />
+    <None Include="Resources\clear.png" />
     <None Include="Resources\Phone Book.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

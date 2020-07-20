@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
-            this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.listViewBook = new System.Windows.Forms.ListView();
             this.columnHeaderName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderComp = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -49,33 +48,27 @@
             this.menuSendReport = new System.Windows.Forms.ToolStripMenuItem();
             this.menu = new System.Windows.Forms.MenuStrip();
             this.menuFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuPrint = new System.Windows.Forms.ToolStripMenuItem();
+            this.split1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuExit = new System.Windows.Forms.ToolStripMenuItem();
             this.menuService = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuUpdate = new System.Windows.Forms.ToolStripMenuItem();
             this.menuForceUpdate = new System.Windows.Forms.ToolStripMenuItem();
             this.menuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.menuNews = new System.Windows.Forms.ToolStripMenuItem();
             this.menuAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.comboBoxComps = new System.Windows.Forms.ComboBox();
-            this.comboBoxDeps = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.buttonReset = new System.Windows.Forms.Button();
-            this.menuUpdate = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuPrint = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStrip = new System.Windows.Forms.ToolStrip();
+            this.toolLabelComp = new System.Windows.Forms.ToolStripLabel();
+            this.toolListComp = new System.Windows.Forms.ToolStripComboBox();
+            this.toolLabelDep = new System.Windows.Forms.ToolStripLabel();
+            this.toolListDep = new System.Windows.Forms.ToolStripComboBox();
+            this.toolReset = new System.Windows.Forms.ToolStripButton();
+            this.toolTextSearch = new System.Windows.Forms.ToolStripTextBox();
+            this.toolLabelSearch = new System.Windows.Forms.ToolStripLabel();
             this.contextMenu.SuspendLayout();
             this.menu.SuspendLayout();
+            this.toolStrip.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // textBoxSearch
-            // 
-            this.textBoxSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxSearch.Location = new System.Drawing.Point(60, 28);
-            this.textBoxSearch.Name = "textBoxSearch";
-            this.textBoxSearch.Size = new System.Drawing.Size(226, 20);
-            this.textBoxSearch.TabIndex = 0;
-            this.textBoxSearch.TextChanged += new System.EventHandler(this.TextBoxSearch_TextChanged);
             // 
             // listViewBook
             // 
@@ -92,13 +85,14 @@
             this.listViewBook.ContextMenuStrip = this.contextMenu;
             this.listViewBook.FullRowSelect = true;
             this.listViewBook.HideSelection = false;
-            this.listViewBook.Location = new System.Drawing.Point(12, 53);
+            this.listViewBook.Location = new System.Drawing.Point(0, 52);
             this.listViewBook.Name = "listViewBook";
-            this.listViewBook.Size = new System.Drawing.Size(910, 458);
-            this.listViewBook.TabIndex = 4;
+            this.listViewBook.Size = new System.Drawing.Size(934, 471);
+            this.listViewBook.TabIndex = 0;
             this.listViewBook.UseCompatibleStateImageBehavior = false;
             this.listViewBook.View = System.Windows.Forms.View.Details;
             this.listViewBook.SelectedIndexChanged += new System.EventHandler(this.listViewBook_SelectedIndexChanged);
+            this.listViewBook.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.listViewBook_KeyPress);
             // 
             // columnHeaderName
             // 
@@ -217,16 +211,30 @@
             // 
             this.menuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuPrint,
+            this.split1,
             this.menuExit});
             this.menuFile.Name = "menuFile";
             this.menuFile.Size = new System.Drawing.Size(48, 20);
             this.menuFile.Text = "Файл";
             // 
+            // menuPrint
+            // 
+            this.menuPrint.Name = "menuPrint";
+            this.menuPrint.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
+            this.menuPrint.Size = new System.Drawing.Size(154, 22);
+            this.menuPrint.Text = "Печать";
+            this.menuPrint.Click += new System.EventHandler(this.menuPrint_Click);
+            // 
+            // split1
+            // 
+            this.split1.Name = "split1";
+            this.split1.Size = new System.Drawing.Size(151, 6);
+            // 
             // menuExit
             // 
             this.menuExit.Name = "menuExit";
             this.menuExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.menuExit.Size = new System.Drawing.Size(180, 22);
+            this.menuExit.Size = new System.Drawing.Size(154, 22);
             this.menuExit.Text = "Выход";
             this.menuExit.Click += new System.EventHandler(this.menuExit_Click);
             // 
@@ -239,10 +247,18 @@
             this.menuService.Size = new System.Drawing.Size(59, 20);
             this.menuService.Text = "Сервис";
             // 
+            // menuUpdate
+            // 
+            this.menuUpdate.Name = "menuUpdate";
+            this.menuUpdate.ShortcutKeys = System.Windows.Forms.Keys.F5;
+            this.menuUpdate.Size = new System.Drawing.Size(170, 22);
+            this.menuUpdate.Text = "Обновить";
+            this.menuUpdate.Click += new System.EventHandler(this.menuUpdate_Click);
+            // 
             // menuForceUpdate
             // 
             this.menuForceUpdate.Name = "menuForceUpdate";
-            this.menuForceUpdate.Size = new System.Drawing.Size(180, 22);
+            this.menuForceUpdate.Size = new System.Drawing.Size(170, 22);
             this.menuForceUpdate.Text = "Перечитать LDAP";
             this.menuForceUpdate.Click += new System.EventHandler(this.menuForceUpdate_Click);
             // 
@@ -269,97 +285,84 @@
             this.menuAbout.Text = "О программе";
             this.menuAbout.Click += new System.EventHandler(this.menuAbout_Click);
             // 
-            // label1
+            // toolStrip
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 31);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(42, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Поиск:";
+            this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolLabelComp,
+            this.toolListComp,
+            this.toolLabelDep,
+            this.toolListDep,
+            this.toolReset,
+            this.toolTextSearch,
+            this.toolLabelSearch});
+            this.toolStrip.Location = new System.Drawing.Point(0, 24);
+            this.toolStrip.Name = "toolStrip";
+            this.toolStrip.Size = new System.Drawing.Size(934, 25);
+            this.toolStrip.TabIndex = 0;
+            this.toolStrip.Text = "toolStrip1";
             // 
-            // label2
+            // toolLabelComp
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(292, 31);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Компания:";
+            this.toolLabelComp.Name = "toolLabelComp";
+            this.toolLabelComp.Size = new System.Drawing.Size(82, 22);
+            this.toolLabelComp.Text = "Организация:";
             // 
-            // comboBoxComps
+            // toolListComp
             // 
-            this.comboBoxComps.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBoxComps.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxComps.FormattingEnabled = true;
-            this.comboBoxComps.Location = new System.Drawing.Point(359, 28);
-            this.comboBoxComps.Name = "comboBoxComps";
-            this.comboBoxComps.Size = new System.Drawing.Size(200, 21);
-            this.comboBoxComps.TabIndex = 1;
-            this.comboBoxComps.SelectedIndexChanged += new System.EventHandler(this.comboBoxComps_SelectedIndexChanged);
+            this.toolListComp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.toolListComp.Name = "toolListComp";
+            this.toolListComp.Size = new System.Drawing.Size(200, 25);
+            this.toolListComp.SelectedIndexChanged += new System.EventHandler(this.toolListComp_SelectedIndexChanged);
             // 
-            // comboBoxDeps
+            // toolLabelDep
             // 
-            this.comboBoxDeps.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBoxDeps.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxDeps.FormattingEnabled = true;
-            this.comboBoxDeps.Location = new System.Drawing.Point(661, 28);
-            this.comboBoxDeps.Name = "comboBoxDeps";
-            this.comboBoxDeps.Size = new System.Drawing.Size(200, 21);
-            this.comboBoxDeps.TabIndex = 2;
-            this.comboBoxDeps.SelectedIndexChanged += new System.EventHandler(this.comboBoxDeps_SelectedIndexChanged);
+            this.toolLabelDep.Name = "toolLabelDep";
+            this.toolLabelDep.Size = new System.Drawing.Size(95, 22);
+            this.toolLabelDep.Text = "Подразделение:";
             // 
-            // label3
+            // toolListDep
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(565, 31);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(90, 13);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Подразделение:";
+            this.toolListDep.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.toolListDep.Name = "toolListDep";
+            this.toolListDep.Size = new System.Drawing.Size(200, 25);
+            this.toolListDep.SelectedIndexChanged += new System.EventHandler(this.toolListDep_SelectedIndexChanged);
             // 
-            // buttonReset
+            // toolReset
             // 
-            this.buttonReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonReset.Location = new System.Drawing.Point(867, 26);
-            this.buttonReset.Name = "buttonReset";
-            this.buttonReset.Size = new System.Drawing.Size(55, 23);
-            this.buttonReset.TabIndex = 3;
-            this.buttonReset.Text = "Сброс";
-            this.buttonReset.UseVisualStyleBackColor = true;
-            this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
+            this.toolReset.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolReset.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolReset.Image = global::LDAP_Phone_Book.Properties.Resources.clear;
+            this.toolReset.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolReset.Name = "toolReset";
+            this.toolReset.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.toolReset.Size = new System.Drawing.Size(23, 22);
+            this.toolReset.Text = "Сброс";
+            this.toolReset.Click += new System.EventHandler(this.toolReset_Click);
             // 
-            // menuUpdate
+            // toolTextSearch
             // 
-            this.menuUpdate.Name = "menuUpdate";
-            this.menuUpdate.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.menuUpdate.Size = new System.Drawing.Size(180, 22);
-            this.menuUpdate.Text = "Обновить";
-            this.menuUpdate.Click += new System.EventHandler(this.menuUpdate_Click);
+            this.toolTextSearch.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolTextSearch.Name = "toolTextSearch";
+            this.toolTextSearch.Size = new System.Drawing.Size(200, 25);
+            this.toolTextSearch.Click += new System.EventHandler(this.toolTextSearch_Click);
+            this.toolTextSearch.TextChanged += new System.EventHandler(this.toolTextSearch_TextChanged);
             // 
-            // menuPrint
+            // toolLabelSearch
             // 
-            this.menuPrint.Name = "menuPrint";
-            this.menuPrint.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.menuPrint.Size = new System.Drawing.Size(180, 22);
-            this.menuPrint.Text = "Печать";
-            this.menuPrint.Click += new System.EventHandler(this.menuPrint_Click);
+            this.toolLabelSearch.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolLabelSearch.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolLabelSearch.Image = global::LDAP_Phone_Book.Properties.Resources.search;
+            this.toolLabelSearch.Name = "toolLabelSearch";
+            this.toolLabelSearch.Size = new System.Drawing.Size(16, 22);
+            this.toolLabelSearch.Text = "Поиск:";
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(934, 523);
-            this.Controls.Add(this.buttonReset);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.comboBoxDeps);
-            this.Controls.Add(this.comboBoxComps);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.listViewBook);
-            this.Controls.Add(this.textBoxSearch);
             this.Controls.Add(this.menu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menu;
@@ -371,14 +374,14 @@
             this.contextMenu.ResumeLayout(false);
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
+            this.toolStrip.ResumeLayout(false);
+            this.toolStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox textBoxSearch;
         private System.Windows.Forms.ListView listViewBook;
         private System.Windows.Forms.ColumnHeader columnHeaderName;
         private System.Windows.Forms.ColumnHeader columnHeaderNum;
@@ -388,11 +391,6 @@
         private System.Windows.Forms.ToolStripMenuItem menuExit;
         private System.Windows.Forms.ToolStripMenuItem menuHelp;
         private System.Windows.Forms.ToolStripMenuItem menuAbout;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBoxComps;
-        private System.Windows.Forms.ComboBox comboBoxDeps;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ColumnHeader columnHeaderDep;
         private System.Windows.Forms.ColumnHeader columnHeaderComp;
         private System.Windows.Forms.ToolStripMenuItem menuService;
@@ -403,7 +401,6 @@
         private System.Windows.Forms.ToolStripMenuItem menuCopyW;
         private System.Windows.Forms.ToolStripMenuItem menuCopyG;
         private System.Windows.Forms.ToolStripMenuItem menuCopyM;
-        private System.Windows.Forms.Button buttonReset;
         private System.Windows.Forms.ToolStripMenuItem menuSendMail;
         private System.Windows.Forms.ToolStripSeparator menuSep1;
         private System.Windows.Forms.ToolStripSeparator menuSep2;
@@ -411,6 +408,15 @@
         private System.Windows.Forms.ToolStripMenuItem menuNews;
         private System.Windows.Forms.ToolStripMenuItem menuUpdate;
         private System.Windows.Forms.ToolStripMenuItem menuPrint;
+        private System.Windows.Forms.ToolStripSeparator split1;
+        private System.Windows.Forms.ToolStrip toolStrip;
+        private System.Windows.Forms.ToolStripLabel toolLabelComp;
+        private System.Windows.Forms.ToolStripComboBox toolListComp;
+        private System.Windows.Forms.ToolStripLabel toolLabelDep;
+        private System.Windows.Forms.ToolStripComboBox toolListDep;
+        private System.Windows.Forms.ToolStripLabel toolLabelSearch;
+        private System.Windows.Forms.ToolStripTextBox toolTextSearch;
+        private System.Windows.Forms.ToolStripButton toolReset;
     }
 }
 

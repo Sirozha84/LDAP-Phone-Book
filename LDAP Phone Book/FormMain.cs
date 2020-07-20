@@ -13,6 +13,8 @@ namespace LDAP_Phone_Book
     public partial class FormMain : Form
     {
         List<Contact> viewedContacts = new List<Contact>();
+        bool isProgramUpdate = false;
+
         public FormMain()
         {
             InitializeComponent();
@@ -21,6 +23,7 @@ namespace LDAP_Phone_Book
         private void FormMain_Load(object sender, EventArgs e)
         {
             Data.Load();
+            Refresh();
             Redraw();
         }
         private void FormMain_Shown(object sender, EventArgs e)
@@ -28,32 +31,39 @@ namespace LDAP_Phone_Book
             ShowNews();
         }
 
-
-        private void TextBoxSearch_TextChanged(object sender, EventArgs e) { Redraw(); }
-        private void comboBoxComps_SelectedIndexChanged(object sender, EventArgs e) { Redraw(); }
-        private void comboBoxDeps_SelectedIndexChanged(object sender, EventArgs e) { Redraw(); }
+        void Refresh()
+        {
+            isProgramUpdate = true;
+            //Выпадающие списки с компаниями и подразделениями
+            toolListComp.Items.Clear();
+            foreach (string c in Data.comps)
+                toolListComp.Items.Add(c);
+            toolListComp.SelectedIndex = 0;
+            toolListDep.Items.Clear();
+            foreach (string d in Data.deps)
+                toolListDep.Items.Add(d);
+            toolListDep.SelectedIndex = 0;
+            isProgramUpdate = false;
+        }
 
         void Redraw()
         {
-            //Выпадающие списки с компаниями и подразделениями
-            comboBoxComps.DataSource = Data.comps;
-            comboBoxDeps.DataSource = Data.deps;
-
-            if (comboBoxDeps.Items.Count == 0) return;
+            if (isProgramUpdate) return;
             viewedContacts.Clear();
             listViewBook.BeginUpdate();
             listViewBook.Items.Clear();
+            string search = toolTextSearch.Text.ToLower();
             foreach (Contact user in Data.book)
             {
-                string search = textBoxSearch.Text.ToLower();
+                
                 if ( (user.name.ToLower().Contains(search) |
                       user.post.ToLower().Contains(search) |
                       user.phoneW.ToLower().Contains(search) |
                       user.phoneG.ToLower().Contains(search) |
                       user.phoneM.ToLower().Contains(search) |
                       user.mail.ToLower().Contains(search)) &
-                    (comboBoxComps.SelectedValue.ToString() == "Все" || comboBoxComps.SelectedValue.ToString() == user.company) &
-                    (comboBoxDeps.SelectedValue.ToString() == "Все" || comboBoxDeps.SelectedValue.ToString() == user.dep))
+                    (toolListComp.Text == "Все" || toolListComp.Text == user.company) &
+                    (toolListDep.Text == "Все" || toolListDep.Text == user.dep))
                 {
                     string phones = user.phoneW;
                     if (phones != "" & user.phoneG != "") phones += ", ";
@@ -113,12 +123,6 @@ namespace LDAP_Phone_Book
                 menuSendReport.Text = "Сообщить о новом контакте";
             }
         }
-        private void buttonReset_Click(object sender, EventArgs e)
-        {
-            textBoxSearch.Text = "";
-            comboBoxComps.SelectedIndex = 0;
-            comboBoxDeps.SelectedIndex = 0;
-        }
 
         private void ShowNews()
         {
@@ -151,6 +155,7 @@ namespace LDAP_Phone_Book
         private void menuUpdate_Click(object sender, EventArgs e)
         {
             Data.Load();
+            Refresh();
             Redraw();
         }
 
@@ -172,6 +177,28 @@ namespace LDAP_Phone_Book
             form.ShowDialog();
         }
 
+
+        #endregion
+
+        #region Панель инструментов
+
+        private void toolListComp_SelectedIndexChanged(object sender, EventArgs e) { Redraw(); }
+        private void toolListDep_SelectedIndexChanged(object sender, EventArgs e) { Redraw(); }
+        private void toolTextSearch_Click(object sender, EventArgs e) { Redraw(); }
+
+        private void toolTextSearch_TextChanged(object sender, EventArgs e)
+        {
+            Redraw();
+        }
+        private void toolReset_Click(object sender, EventArgs e)
+        {
+            isProgramUpdate = true;
+            toolTextSearch.Text = "";
+            toolListComp.SelectedIndex = 0;
+            toolListDep.SelectedIndex = 0;
+            isProgramUpdate = false;
+            Redraw();
+        }
 
         #endregion
 
@@ -215,7 +242,15 @@ namespace LDAP_Phone_Book
         }
 
 
+
         #endregion
 
+        private void listViewBook_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar >= 32)
+                toolTextSearch.Text += e.KeyChar.ToString();
+            toolTextSearch.Focus();
+            toolTextSearch.SelectionStart = toolTextSearch.Text.Length;
+        }
     }
 }
