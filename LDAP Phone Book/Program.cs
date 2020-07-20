@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LDAP_Phone_Book
@@ -9,7 +7,7 @@ namespace LDAP_Phone_Book
     static class Program
     {
 
-        public static string Version = "1.4 (05.03.2020)";
+        public static string Version = "1.5 (20.07.2020)";
 
         /// <summary>
         /// Главная точка входа для приложения.

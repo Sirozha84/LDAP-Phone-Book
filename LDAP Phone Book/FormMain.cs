@@ -22,13 +22,24 @@ namespace LDAP_Phone_Book
 
         private void FormMain_Load(object sender, EventArgs e)
         {
+            Left = Properties.Settings.Default.Left;
+            Top = Properties.Settings.Default.Top;
+            Width = Properties.Settings.Default.Width;
+            Height = Properties.Settings.Default.Height;
+            listViewBook.Columns[0].Width = Properties.Settings.Default.C0;
+            listViewBook.Columns[1].Width = Properties.Settings.Default.C1;
+            listViewBook.Columns[2].Width = Properties.Settings.Default.C2;
+            listViewBook.Columns[3].Width = Properties.Settings.Default.C3;
+            listViewBook.Columns[4].Width = Properties.Settings.Default.C4;
+            listViewBook.Columns[5].Width = Properties.Settings.Default.C5;
             Data.Load();
             Refresh();
             Redraw();
         }
-        private void FormMain_Shown(object sender, EventArgs e)
+        private void FormMain_Shown(object sender, EventArgs e) 
         {
-            ShowNews();
+            if (Properties.Settings.Default.ShowTips == 0)
+               menuNews_Click(null, null);
         }
 
         void Refresh()
@@ -124,22 +135,6 @@ namespace LDAP_Phone_Book
             }
         }
 
-        private void ShowNews()
-        {
-            if (Properties.Settings.Default.ShowTips < 1)
-            {
-                MessageBox.Show(
-                    "Здравствуйте!\n\n" +
-                    "Теперь вы можете отправить информацию об ошибках в справочнике или предложить добавить новый контакт.\n" +
-                    "Для этого нажмите правой кнопкой мыши на контакт и выберите пункт \"Сообщить об ошибке\", " +
-                    "или по пустому месту окна и выберите пункт \"Сообщить о новом контакте\".",
-                    "Новости  обновления");
-
-            }
-            Properties.Settings.Default.ShowTips = 1;
-            Properties.Settings.Default.Save();
-        }
-
         #region Меню
 
         private void menuPrint_Click(object sender, EventArgs e)
@@ -167,8 +162,10 @@ namespace LDAP_Phone_Book
 
         private void menuNews_Click(object sender, EventArgs e)
         {
-            Properties.Settings.Default.ShowTips = 0;
-            ShowNews();
+            FormNews form = new FormNews();
+            form.ShowDialog();
+            Properties.Settings.Default.ShowTips = 1;
+            Properties.Settings.Default.Save();
         }
 
         private void menuAbout_Click(object sender, EventArgs e)
@@ -251,6 +248,21 @@ namespace LDAP_Phone_Book
                 toolTextSearch.Text += e.KeyChar.ToString();
             toolTextSearch.Focus();
             toolTextSearch.SelectionStart = toolTextSearch.Text.Length;
+        }
+
+        private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Properties.Settings.Default.Left = Left;
+            Properties.Settings.Default.Top = Top;
+            Properties.Settings.Default.Width = Width;
+            Properties.Settings.Default.Height = Height;
+            Properties.Settings.Default.C0 = listViewBook.Columns[0].Width;
+            Properties.Settings.Default.C1 = listViewBook.Columns[1].Width;
+            Properties.Settings.Default.C2 = listViewBook.Columns[2].Width;
+            Properties.Settings.Default.C3 = listViewBook.Columns[3].Width;
+            Properties.Settings.Default.C4 = listViewBook.Columns[4].Width;
+            Properties.Settings.Default.C5 = listViewBook.Columns[5].Width;
+            Properties.Settings.Default.Save();
         }
     }
 }

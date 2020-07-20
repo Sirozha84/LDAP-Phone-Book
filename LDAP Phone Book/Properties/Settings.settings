@@ -5,5 +5,35 @@
     <Setting Name="ShowTips" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
+    <Setting Name="Left" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">200</Value>
+    </Setting>
+    <Setting Name="Top" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">200</Value>
+    </Setting>
+    <Setting Name="Width" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">950</Value>
+    </Setting>
+    <Setting Name="Height" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">500</Value>
+    </Setting>
+    <Setting Name="C0" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">200</Value>
+    </Setting>
+    <Setting Name="C1" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">120</Value>
+    </Setting>
+    <Setting Name="C2" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">120</Value>
+    </Setting>
+    <Setting Name="C3" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">160</Value>
+    </Setting>
+    <Setting Name="C4" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">120</Value>
+    </Setting>
+    <Setting Name="C5" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">160</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

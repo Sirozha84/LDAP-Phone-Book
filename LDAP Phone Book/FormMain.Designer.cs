@@ -62,8 +62,8 @@
             this.toolListComp = new System.Windows.Forms.ToolStripComboBox();
             this.toolLabelDep = new System.Windows.Forms.ToolStripLabel();
             this.toolListDep = new System.Windows.Forms.ToolStripComboBox();
-            this.toolReset = new System.Windows.Forms.ToolStripButton();
             this.toolTextSearch = new System.Windows.Forms.ToolStripTextBox();
+            this.toolReset = new System.Windows.Forms.ToolStripButton();
             this.toolLabelSearch = new System.Windows.Forms.ToolStripLabel();
             this.contextMenu.SuspendLayout();
             this.menu.SuspendLayout();
@@ -87,7 +87,7 @@
             this.listViewBook.HideSelection = false;
             this.listViewBook.Location = new System.Drawing.Point(0, 52);
             this.listViewBook.Name = "listViewBook";
-            this.listViewBook.Size = new System.Drawing.Size(934, 471);
+            this.listViewBook.Size = new System.Drawing.Size(934, 409);
             this.listViewBook.TabIndex = 0;
             this.listViewBook.UseCompatibleStateImageBehavior = false;
             this.listViewBook.View = System.Windows.Forms.View.Details;
@@ -327,6 +327,14 @@
             this.toolListDep.Size = new System.Drawing.Size(200, 25);
             this.toolListDep.SelectedIndexChanged += new System.EventHandler(this.toolListDep_SelectedIndexChanged);
             // 
+            // toolTextSearch
+            // 
+            this.toolTextSearch.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolTextSearch.Name = "toolTextSearch";
+            this.toolTextSearch.Size = new System.Drawing.Size(200, 25);
+            this.toolTextSearch.Click += new System.EventHandler(this.toolTextSearch_Click);
+            this.toolTextSearch.TextChanged += new System.EventHandler(this.toolTextSearch_TextChanged);
+            // 
             // toolReset
             // 
             this.toolReset.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
@@ -338,14 +346,6 @@
             this.toolReset.Size = new System.Drawing.Size(23, 22);
             this.toolReset.Text = "Сброс";
             this.toolReset.Click += new System.EventHandler(this.toolReset_Click);
-            // 
-            // toolTextSearch
-            // 
-            this.toolTextSearch.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolTextSearch.Name = "toolTextSearch";
-            this.toolTextSearch.Size = new System.Drawing.Size(200, 25);
-            this.toolTextSearch.Click += new System.EventHandler(this.toolTextSearch_Click);
-            this.toolTextSearch.TextChanged += new System.EventHandler(this.toolTextSearch_TextChanged);
             // 
             // toolLabelSearch
             // 
@@ -360,7 +360,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(934, 523);
+            this.ClientSize = new System.Drawing.Size(934, 461);
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.listViewBook);
             this.Controls.Add(this.menu);
@@ -369,6 +369,7 @@
             this.MinimumSize = new System.Drawing.Size(950, 200);
             this.Name = "FormMain";
             this.Text = "LDAP Phone Book";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.Shown += new System.EventHandler(this.FormMain_Shown);
             this.contextMenu.ResumeLayout(false);
