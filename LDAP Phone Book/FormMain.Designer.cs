@@ -62,8 +62,8 @@
             this.toolListComp = new System.Windows.Forms.ToolStripComboBox();
             this.toolLabelDep = new System.Windows.Forms.ToolStripLabel();
             this.toolListDep = new System.Windows.Forms.ToolStripComboBox();
-            this.toolTextSearch = new System.Windows.Forms.ToolStripTextBox();
             this.toolReset = new System.Windows.Forms.ToolStripButton();
+            this.toolTextSearch = new System.Windows.Forms.ToolStripTextBox();
             this.toolLabelSearch = new System.Windows.Forms.ToolStripLabel();
             this.contextMenu.SuspendLayout();
             this.menu.SuspendLayout();
@@ -327,14 +327,6 @@
             this.toolListDep.Size = new System.Drawing.Size(200, 25);
             this.toolListDep.SelectedIndexChanged += new System.EventHandler(this.toolListDep_SelectedIndexChanged);
             // 
-            // toolTextSearch
-            // 
-            this.toolTextSearch.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolTextSearch.Name = "toolTextSearch";
-            this.toolTextSearch.Size = new System.Drawing.Size(200, 25);
-            this.toolTextSearch.Click += new System.EventHandler(this.toolTextSearch_Click);
-            this.toolTextSearch.TextChanged += new System.EventHandler(this.toolTextSearch_TextChanged);
-            // 
             // toolReset
             // 
             this.toolReset.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
@@ -346,6 +338,14 @@
             this.toolReset.Size = new System.Drawing.Size(23, 22);
             this.toolReset.Text = "Сброс";
             this.toolReset.Click += new System.EventHandler(this.toolReset_Click);
+            // 
+            // toolTextSearch
+            // 
+            this.toolTextSearch.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolTextSearch.Name = "toolTextSearch";
+            this.toolTextSearch.Size = new System.Drawing.Size(200, 25);
+            this.toolTextSearch.Click += new System.EventHandler(this.toolTextSearch_Click);
+            this.toolTextSearch.TextChanged += new System.EventHandler(this.toolTextSearch_TextChanged);
             // 
             // toolLabelSearch
             // 
@@ -366,7 +366,7 @@
             this.Controls.Add(this.menu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menu;
-            this.MinimumSize = new System.Drawing.Size(950, 200);
+            this.MinimumSize = new System.Drawing.Size(850, 200);
             this.Name = "FormMain";
             this.Text = "LDAP Phone Book";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);

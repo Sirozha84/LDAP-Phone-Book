@@ -22,6 +22,11 @@ namespace LDAP_Phone_Book
 
         private void FormMain_Load(object sender, EventArgs e)
         {
+            if (Properties.Settings.Default.Top < 0)
+            {
+                Properties.Settings.Default.Reset();
+                Properties.Settings.Default.ShowTips = 1;
+            }
             Left = Properties.Settings.Default.Left;
             Top = Properties.Settings.Default.Top;
             Width = Properties.Settings.Default.Width;
@@ -32,6 +37,7 @@ namespace LDAP_Phone_Book
             listViewBook.Columns[3].Width = Properties.Settings.Default.C3;
             listViewBook.Columns[4].Width = Properties.Settings.Default.C4;
             listViewBook.Columns[5].Width = Properties.Settings.Default.C5;
+            
             Data.Load();
             Refresh();
             Redraw();

@@ -7,7 +7,7 @@ namespace LDAP_Phone_Book
     static class Program
     {
 
-        public static string Version = "1.5 (20.07.2020)";
+        public static string Version = "1.6 (28.07.2020)";
 
         /// <summary>
         /// Главная точка входа для приложения.

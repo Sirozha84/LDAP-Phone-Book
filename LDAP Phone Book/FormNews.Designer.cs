@@ -42,6 +42,7 @@
             this.listBoxDates.FormattingEnabled = true;
             this.listBoxDates.ItemHeight = 15;
             this.listBoxDates.Items.AddRange(new object[] {
+            "28.07.2020",
             "20.07.2020",
             "05.03.2020"});
             this.listBoxDates.Location = new System.Drawing.Point(12, 12);
