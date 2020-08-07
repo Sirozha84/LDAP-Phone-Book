@@ -22,13 +22,10 @@ namespace LDAP_Phone_Book
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            if (Properties.Settings.Default.Top < 0)
-            {
-                Properties.Settings.Default.Reset();
-                Properties.Settings.Default.ShowTips = 1;
-            }
             Left = Properties.Settings.Default.Left;
             Top = Properties.Settings.Default.Top;
+            if (Left < 0) Left = 300;
+            if (Top < 0) Top = 300;
             Width = Properties.Settings.Default.Width;
             Height = Properties.Settings.Default.Height;
             listViewBook.Columns[0].Width = Properties.Settings.Default.C0;
