@@ -9,6 +9,8 @@ namespace LDAP_Phone_Book
             InitializeComponent();
             label2.Text = "Версия: " + Program.Version;
             richTextBoxHostory.Text =
+                "Версия 1.7 (В работе)\n\n" +
+                "• Минорные правки\n\n" +
                 "Версия 1.6 (28.07.2020)\n\n" +
                 "• Исправлена ошибка загрузки приложения в свёрнутом состоянии\n" +
                 "• Немножко уменьшена минимальная ширина окна\n\n" +

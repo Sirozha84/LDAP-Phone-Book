@@ -103,28 +103,11 @@ namespace LDAP_Phone_Book
             if (listViewBook.SelectedItems.Count > 0)
             {
                 Contact user = (Contact)listViewBook.SelectedItems[0].Tag;
-                if (user.phoneW != "")
-                {
-                    menuCopyW.Enabled = true;
-                    //menuCopyW.Text = "Скопировать рабочий номер: " + user.phoneW;
-                }
-                if (user.phoneG != "")
-                {
-                    menuCopyG.Enabled = true;
-                    //menuCopyG.Text = "Скопировать городской номер: " + user.phoneG;
-                }
-                if (user.phoneM != "")
-                {
-                    menuCopyM.Enabled = true;
-                    //menuCopyM.Text = "Скопировать мобильный номер: " + user.phoneM;
-                }
-                if (user.mail != "")
-                {
-                    menuSendMail.Enabled = true;
-                    //menuSendMail.Text = "Отправить письмо на " + user.mail;
-                    menuCopyMail.Enabled = true;
-                    //menuCopyMail.Text = "Скопировать Email: " + user.mail;
-                }
+                menuCopyW.Enabled = user.phoneW != "";
+                menuCopyG.Enabled = user.phoneG != "";
+                menuCopyM.Enabled = user.phoneM != "";
+                menuSendMail.Enabled = user.mail != "";
+                menuCopyMail.Enabled = user.mail != "";
                 menuSendReport.Text = "Сообщить об ошибке";
             }
             else
@@ -228,7 +211,6 @@ namespace LDAP_Phone_Book
             Contact user = (Contact)listViewBook.SelectedItems[0].Tag;
             Clipboard.SetText(user.mail);
         }
-
         private void menuSendReport_Click(object sender, EventArgs e)
         {
             string name = "";
@@ -240,9 +222,6 @@ namespace LDAP_Phone_Book
             FormReport form = new FormReport(name);
             form.ShowDialog();
         }
-
-
-
         #endregion
 
         private void listViewBook_KeyPress(object sender, KeyPressEventArgs e)
