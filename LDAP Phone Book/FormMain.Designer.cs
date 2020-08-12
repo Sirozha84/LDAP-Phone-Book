@@ -311,7 +311,7 @@
             // 
             this.toolListComp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.toolListComp.Name = "toolListComp";
-            this.toolListComp.Size = new System.Drawing.Size(200, 25);
+            this.toolListComp.Size = new System.Drawing.Size(180, 25);
             this.toolListComp.SelectedIndexChanged += new System.EventHandler(this.toolListComp_SelectedIndexChanged);
             // 
             // toolLabelDep
@@ -324,7 +324,7 @@
             // 
             this.toolListDep.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.toolListDep.Name = "toolListDep";
-            this.toolListDep.Size = new System.Drawing.Size(200, 25);
+            this.toolListDep.Size = new System.Drawing.Size(180, 25);
             this.toolListDep.SelectedIndexChanged += new System.EventHandler(this.toolListDep_SelectedIndexChanged);
             // 
             // toolReset
@@ -343,7 +343,7 @@
             // 
             this.toolTextSearch.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.toolTextSearch.Name = "toolTextSearch";
-            this.toolTextSearch.Size = new System.Drawing.Size(200, 25);
+            this.toolTextSearch.Size = new System.Drawing.Size(180, 25);
             this.toolTextSearch.Click += new System.EventHandler(this.toolTextSearch_Click);
             this.toolTextSearch.TextChanged += new System.EventHandler(this.toolTextSearch_TextChanged);
             // 
@@ -366,7 +366,7 @@
             this.Controls.Add(this.menu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menu;
-            this.MinimumSize = new System.Drawing.Size(850, 200);
+            this.MinimumSize = new System.Drawing.Size(800, 200);
             this.Name = "FormMain";
             this.Text = "LDAP Phone Book";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
