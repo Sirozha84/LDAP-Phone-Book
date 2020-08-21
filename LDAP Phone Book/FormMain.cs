@@ -133,7 +133,16 @@ namespace LDAP_Phone_Book
             Close();
         }
 
-        private void menuUpdate_Click(object sender, EventArgs e)
+        private void menuFont_Click(object sender, EventArgs e)
+        {
+            FontDialog dialog = new FontDialog();
+            if (dialog.ShowDialog() == DialogResult.OK) 
+            {
+                listViewBook.Font = dialog.Font;
+            }
+        }
+
+        private void menuRefresh_Click(object sender, EventArgs e)
         {
             Data.Load();
             Refresh();
@@ -246,5 +255,6 @@ namespace LDAP_Phone_Book
             Properties.Settings.Default.C5 = listViewBook.Columns[5].Width;
             Properties.Settings.Default.Save();
         }
+
     }
 }

@@ -49,10 +49,9 @@
             this.menu = new System.Windows.Forms.MenuStrip();
             this.menuFile = new System.Windows.Forms.ToolStripMenuItem();
             this.menuPrint = new System.Windows.Forms.ToolStripMenuItem();
-            this.split1 = new System.Windows.Forms.ToolStripSeparator();
+            this.sep2 = new System.Windows.Forms.ToolStripSeparator();
             this.menuExit = new System.Windows.Forms.ToolStripMenuItem();
             this.menuService = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuUpdate = new System.Windows.Forms.ToolStripMenuItem();
             this.menuForceUpdate = new System.Windows.Forms.ToolStripMenuItem();
             this.menuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.menuNews = new System.Windows.Forms.ToolStripMenuItem();
@@ -65,6 +64,10 @@
             this.toolReset = new System.Windows.Forms.ToolStripButton();
             this.toolTextSearch = new System.Windows.Forms.ToolStripTextBox();
             this.toolLabelSearch = new System.Windows.Forms.ToolStripLabel();
+            this.menuView = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuFont = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuRefresh = new System.Windows.Forms.ToolStripMenuItem();
+            this.sep1 = new System.Windows.Forms.ToolStripSeparator();
             this.contextMenu.SuspendLayout();
             this.menu.SuspendLayout();
             this.toolStrip.SuspendLayout();
@@ -199,6 +202,7 @@
             // 
             this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuFile,
+            this.menuView,
             this.menuService,
             this.menuHelp});
             this.menu.Location = new System.Drawing.Point(0, 0);
@@ -211,7 +215,7 @@
             // 
             this.menuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuPrint,
-            this.split1,
+            this.sep2,
             this.menuExit});
             this.menuFile.Name = "menuFile";
             this.menuFile.Size = new System.Drawing.Size(48, 20);
@@ -221,44 +225,35 @@
             // 
             this.menuPrint.Name = "menuPrint";
             this.menuPrint.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.menuPrint.Size = new System.Drawing.Size(154, 22);
+            this.menuPrint.Size = new System.Drawing.Size(180, 22);
             this.menuPrint.Text = "Печать";
             this.menuPrint.Click += new System.EventHandler(this.menuPrint_Click);
             // 
-            // split1
+            // sep2
             // 
-            this.split1.Name = "split1";
-            this.split1.Size = new System.Drawing.Size(151, 6);
+            this.sep2.Name = "sep2";
+            this.sep2.Size = new System.Drawing.Size(177, 6);
             // 
             // menuExit
             // 
             this.menuExit.Name = "menuExit";
             this.menuExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.menuExit.Size = new System.Drawing.Size(154, 22);
+            this.menuExit.Size = new System.Drawing.Size(180, 22);
             this.menuExit.Text = "Выход";
             this.menuExit.Click += new System.EventHandler(this.menuExit_Click);
             // 
             // menuService
             // 
             this.menuService.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuUpdate,
             this.menuForceUpdate});
             this.menuService.Name = "menuService";
             this.menuService.Size = new System.Drawing.Size(59, 20);
             this.menuService.Text = "Сервис";
             // 
-            // menuUpdate
-            // 
-            this.menuUpdate.Name = "menuUpdate";
-            this.menuUpdate.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.menuUpdate.Size = new System.Drawing.Size(170, 22);
-            this.menuUpdate.Text = "Обновить";
-            this.menuUpdate.Click += new System.EventHandler(this.menuUpdate_Click);
-            // 
             // menuForceUpdate
             // 
             this.menuForceUpdate.Name = "menuForceUpdate";
-            this.menuForceUpdate.Size = new System.Drawing.Size(170, 22);
+            this.menuForceUpdate.Size = new System.Drawing.Size(180, 22);
             this.menuForceUpdate.Text = "Перечитать LDAP";
             this.menuForceUpdate.Click += new System.EventHandler(this.menuForceUpdate_Click);
             // 
@@ -356,6 +351,36 @@
             this.toolLabelSearch.Size = new System.Drawing.Size(16, 22);
             this.toolLabelSearch.Text = "Поиск:";
             // 
+            // menuView
+            // 
+            this.menuView.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuFont,
+            this.sep1,
+            this.menuRefresh});
+            this.menuView.Name = "menuView";
+            this.menuView.Size = new System.Drawing.Size(39, 20);
+            this.menuView.Text = "Вид";
+            // 
+            // menuFont
+            // 
+            this.menuFont.Name = "menuFont";
+            this.menuFont.Size = new System.Drawing.Size(180, 22);
+            this.menuFont.Text = "Шрифт";
+            this.menuFont.Click += new System.EventHandler(this.menuFont_Click);
+            // 
+            // menuRefresh
+            // 
+            this.menuRefresh.Name = "menuRefresh";
+            this.menuRefresh.ShortcutKeys = System.Windows.Forms.Keys.F5;
+            this.menuRefresh.Size = new System.Drawing.Size(180, 22);
+            this.menuRefresh.Text = "Обновить";
+            this.menuRefresh.Click += new System.EventHandler(this.menuRefresh_Click);
+            // 
+            // sep1
+            // 
+            this.sep1.Name = "sep1";
+            this.sep1.Size = new System.Drawing.Size(177, 6);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -407,9 +432,8 @@
         private System.Windows.Forms.ToolStripSeparator menuSep2;
         private System.Windows.Forms.ToolStripMenuItem menuSendReport;
         private System.Windows.Forms.ToolStripMenuItem menuNews;
-        private System.Windows.Forms.ToolStripMenuItem menuUpdate;
         private System.Windows.Forms.ToolStripMenuItem menuPrint;
-        private System.Windows.Forms.ToolStripSeparator split1;
+        private System.Windows.Forms.ToolStripSeparator sep2;
         private System.Windows.Forms.ToolStrip toolStrip;
         private System.Windows.Forms.ToolStripLabel toolLabelComp;
         private System.Windows.Forms.ToolStripComboBox toolListComp;
@@ -418,6 +442,10 @@
         private System.Windows.Forms.ToolStripLabel toolLabelSearch;
         private System.Windows.Forms.ToolStripTextBox toolTextSearch;
         private System.Windows.Forms.ToolStripButton toolReset;
+        private System.Windows.Forms.ToolStripMenuItem menuView;
+        private System.Windows.Forms.ToolStripMenuItem menuFont;
+        private System.Windows.Forms.ToolStripSeparator sep1;
+        private System.Windows.Forms.ToolStripMenuItem menuRefresh;
     }
 }
 
