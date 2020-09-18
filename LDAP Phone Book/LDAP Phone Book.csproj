@@ -116,6 +116,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Phone Book.ico" />
+    <None Include="Resources\update.png" />
+    <None Include="Resources\printer.png" />
+    <None Include="Resources\save.png" />
     <None Include="Resources\search.png" />
     <None Include="Resources\clear.png" />
     <None Include="Resources\Phone Book.png" />

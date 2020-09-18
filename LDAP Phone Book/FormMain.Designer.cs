@@ -48,9 +48,12 @@
             this.menuSendReport = new System.Windows.Forms.ToolStripMenuItem();
             this.menu = new System.Windows.Forms.MenuStrip();
             this.menuFile = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuPrint = new System.Windows.Forms.ToolStripMenuItem();
             this.sep2 = new System.Windows.Forms.ToolStripSeparator();
             this.menuExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuView = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuFont = new System.Windows.Forms.ToolStripMenuItem();
+            this.sep1 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuRefresh = new System.Windows.Forms.ToolStripMenuItem();
             this.menuService = new System.Windows.Forms.ToolStripMenuItem();
             this.menuForceUpdate = new System.Windows.Forms.ToolStripMenuItem();
             this.menuHelp = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,13 +64,11 @@
             this.toolListComp = new System.Windows.Forms.ToolStripComboBox();
             this.toolLabelDep = new System.Windows.Forms.ToolStripLabel();
             this.toolListDep = new System.Windows.Forms.ToolStripComboBox();
-            this.toolReset = new System.Windows.Forms.ToolStripButton();
             this.toolTextSearch = new System.Windows.Forms.ToolStripTextBox();
+            this.toolReset = new System.Windows.Forms.ToolStripButton();
             this.toolLabelSearch = new System.Windows.Forms.ToolStripLabel();
-            this.menuView = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuFont = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuRefresh = new System.Windows.Forms.ToolStripMenuItem();
-            this.sep1 = new System.Windows.Forms.ToolStripSeparator();
+            this.menuSave = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuPrint = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenu.SuspendLayout();
             this.menu.SuspendLayout();
             this.toolStrip.SuspendLayout();
@@ -214,20 +215,13 @@
             // menuFile
             // 
             this.menuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuSave,
             this.menuPrint,
             this.sep2,
             this.menuExit});
             this.menuFile.Name = "menuFile";
             this.menuFile.Size = new System.Drawing.Size(48, 20);
             this.menuFile.Text = "Файл";
-            // 
-            // menuPrint
-            // 
-            this.menuPrint.Name = "menuPrint";
-            this.menuPrint.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.menuPrint.Size = new System.Drawing.Size(180, 22);
-            this.menuPrint.Text = "Печать";
-            this.menuPrint.Click += new System.EventHandler(this.menuPrint_Click);
             // 
             // sep2
             // 
@@ -242,6 +236,37 @@
             this.menuExit.Text = "Выход";
             this.menuExit.Click += new System.EventHandler(this.menuExit_Click);
             // 
+            // menuView
+            // 
+            this.menuView.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuFont,
+            this.sep1,
+            this.menuRefresh});
+            this.menuView.Name = "menuView";
+            this.menuView.Size = new System.Drawing.Size(39, 20);
+            this.menuView.Text = "Вид";
+            // 
+            // menuFont
+            // 
+            this.menuFont.Name = "menuFont";
+            this.menuFont.Size = new System.Drawing.Size(180, 22);
+            this.menuFont.Text = "Шрифт";
+            this.menuFont.Click += new System.EventHandler(this.menuFont_Click);
+            // 
+            // sep1
+            // 
+            this.sep1.Name = "sep1";
+            this.sep1.Size = new System.Drawing.Size(177, 6);
+            // 
+            // menuRefresh
+            // 
+            this.menuRefresh.Image = global::LDAP_Phone_Book.Properties.Resources.update;
+            this.menuRefresh.Name = "menuRefresh";
+            this.menuRefresh.ShortcutKeys = System.Windows.Forms.Keys.F5;
+            this.menuRefresh.Size = new System.Drawing.Size(180, 22);
+            this.menuRefresh.Text = "Обновить";
+            this.menuRefresh.Click += new System.EventHandler(this.menuRefresh_Click);
+            // 
             // menuService
             // 
             this.menuService.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -253,7 +278,7 @@
             // menuForceUpdate
             // 
             this.menuForceUpdate.Name = "menuForceUpdate";
-            this.menuForceUpdate.Size = new System.Drawing.Size(180, 22);
+            this.menuForceUpdate.Size = new System.Drawing.Size(170, 22);
             this.menuForceUpdate.Text = "Перечитать LDAP";
             this.menuForceUpdate.Click += new System.EventHandler(this.menuForceUpdate_Click);
             // 
@@ -322,6 +347,14 @@
             this.toolListDep.Size = new System.Drawing.Size(180, 25);
             this.toolListDep.SelectedIndexChanged += new System.EventHandler(this.toolListDep_SelectedIndexChanged);
             // 
+            // toolTextSearch
+            // 
+            this.toolTextSearch.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolTextSearch.Name = "toolTextSearch";
+            this.toolTextSearch.Size = new System.Drawing.Size(180, 25);
+            this.toolTextSearch.Click += new System.EventHandler(this.toolTextSearch_Click);
+            this.toolTextSearch.TextChanged += new System.EventHandler(this.toolTextSearch_TextChanged);
+            // 
             // toolReset
             // 
             this.toolReset.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
@@ -334,14 +367,6 @@
             this.toolReset.Text = "Сброс";
             this.toolReset.Click += new System.EventHandler(this.toolReset_Click);
             // 
-            // toolTextSearch
-            // 
-            this.toolTextSearch.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolTextSearch.Name = "toolTextSearch";
-            this.toolTextSearch.Size = new System.Drawing.Size(180, 25);
-            this.toolTextSearch.Click += new System.EventHandler(this.toolTextSearch_Click);
-            this.toolTextSearch.TextChanged += new System.EventHandler(this.toolTextSearch_TextChanged);
-            // 
             // toolLabelSearch
             // 
             this.toolLabelSearch.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
@@ -351,35 +376,22 @@
             this.toolLabelSearch.Size = new System.Drawing.Size(16, 22);
             this.toolLabelSearch.Text = "Поиск:";
             // 
-            // menuView
+            // menuSave
             // 
-            this.menuView.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuFont,
-            this.sep1,
-            this.menuRefresh});
-            this.menuView.Name = "menuView";
-            this.menuView.Size = new System.Drawing.Size(39, 20);
-            this.menuView.Text = "Вид";
+            this.menuSave.Image = global::LDAP_Phone_Book.Properties.Resources.save;
+            this.menuSave.Name = "menuSave";
+            this.menuSave.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.menuSave.Size = new System.Drawing.Size(180, 22);
+            this.menuSave.Text = "Сохранить";
             // 
-            // menuFont
+            // menuPrint
             // 
-            this.menuFont.Name = "menuFont";
-            this.menuFont.Size = new System.Drawing.Size(180, 22);
-            this.menuFont.Text = "Шрифт";
-            this.menuFont.Click += new System.EventHandler(this.menuFont_Click);
-            // 
-            // menuRefresh
-            // 
-            this.menuRefresh.Name = "menuRefresh";
-            this.menuRefresh.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.menuRefresh.Size = new System.Drawing.Size(180, 22);
-            this.menuRefresh.Text = "Обновить";
-            this.menuRefresh.Click += new System.EventHandler(this.menuRefresh_Click);
-            // 
-            // sep1
-            // 
-            this.sep1.Name = "sep1";
-            this.sep1.Size = new System.Drawing.Size(177, 6);
+            this.menuPrint.Image = global::LDAP_Phone_Book.Properties.Resources.printer;
+            this.menuPrint.Name = "menuPrint";
+            this.menuPrint.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
+            this.menuPrint.Size = new System.Drawing.Size(180, 22);
+            this.menuPrint.Text = "Печать";
+            this.menuPrint.Click += new System.EventHandler(this.menuPrint_Click);
             // 
             // FormMain
             // 
@@ -446,6 +458,7 @@
         private System.Windows.Forms.ToolStripMenuItem menuFont;
         private System.Windows.Forms.ToolStripSeparator sep1;
         private System.Windows.Forms.ToolStripMenuItem menuRefresh;
+        private System.Windows.Forms.ToolStripMenuItem menuSave;
     }
 }
 
