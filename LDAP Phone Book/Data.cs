@@ -4,7 +4,7 @@ using System.IO;
 using System.Xml.Serialization;
 using System.Windows.Forms;
 using System.DirectoryServices;
-
+using System.Text;
 
 namespace LDAP_Phone_Book
 {
@@ -101,6 +101,31 @@ namespace LDAP_Phone_Book
             Save();
 
             PrepareFilters();
+        }
+
+        public static void Export(string fileName)
+        {
+            try
+            {
+                StreamWriter file = new StreamWriter(fileName, false, Encoding.Default);
+                file.WriteLine("ФИО;Организация;Подразделение;Внутренний;Внешний;Мобильный;Электронная почта");
+                foreach (Contact contact in book)
+                {
+                    string s = contact.name + ";";
+                    s += contact.company + ";";
+                    s += contact.dep + ";";
+                    s += contact.phoneW + ";";
+                    s += contact.phoneG + ";";
+                    s += contact.phoneM + ";";
+                    s += contact.mail;
+                    file.WriteLine(s);
+                }
+                file.Close();
+            }
+            catch
+            {
+                MessageBox.Show("Произошла ошибка при сохранении файла");
+            }
         }
     }
 }

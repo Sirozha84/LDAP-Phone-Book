@@ -122,6 +122,11 @@ namespace LDAP_Phone_Book
         }
 
         #region Меню
+        private void menuSave_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog diag = new SaveFileDialog() { Filter = "Значения, разделённые запятыми (*.csv)|*.csv|Все файлы|*.*" };
+            if (diag.ShowDialog() == DialogResult.OK) Data.Export(diag.FileName);
+        }
 
         private void menuPrint_Click(object sender, EventArgs e)
         {
@@ -255,6 +260,5 @@ namespace LDAP_Phone_Book
             Properties.Settings.Default.C5 = listViewBook.Columns[5].Width;
             Properties.Settings.Default.Save();
         }
-
     }
 }
