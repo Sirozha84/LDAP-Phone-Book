@@ -107,20 +107,22 @@ namespace LDAP_Phone_Book
             if (listViewBook.SelectedItems.Count > 0)
             {
                 Contact user = (Contact)listViewBook.SelectedItems[0].Tag;
-                menuCopyW.Enabled = user.phoneW != "";
-                menuCopyG.Enabled = user.phoneG != "";
-                menuCopyM.Enabled = user.phoneM != "";
-                menuSendMail.Enabled = user.mail != "";
-                menuCopyMail.Enabled = user.mail != "";
+                cmenuCopyName.Enabled = true;
+                cmenuCopyW.Enabled = user.phoneW != "";
+                cmenuCopyG.Enabled = user.phoneG != "";
+                cmenuCopyM.Enabled = user.phoneM != "";
+                cmenuSendMail.Enabled = user.mail != "";
+                cmenuCopyMail.Enabled = user.mail != "";
                 menuSendReport.Text = "Сообщить об ошибке";
             }
             else
             {
-                menuSendMail.Enabled = false;
-                menuCopyW.Enabled = false;
-                menuCopyG.Enabled = false;
-                menuCopyM.Enabled = false;
-                menuCopyMail.Enabled = false;
+                cmenuCopyName.Enabled = false;
+                cmenuSendMail.Enabled = false;
+                cmenuCopyW.Enabled = false;
+                cmenuCopyG.Enabled = false;
+                cmenuCopyM.Enabled = false;
+                cmenuCopyMail.Enabled = false;
                 menuSendReport.Text = "Сообщить о новом контакте";
             }
         }
@@ -207,32 +209,37 @@ namespace LDAP_Phone_Book
         #endregion
 
         #region Контекстное меню
-        private void menuSendMail_Click(object sender, EventArgs e)
+        private void SendMail(object sender, EventArgs e)
         {
             Contact user = (Contact)listViewBook.SelectedItems[0].Tag;
             System.Diagnostics.Process.Start("mailto:" + user.mail);
         }
-        private void menuCopyW_Click(object sender, EventArgs e)
+        private void CopyName(object sender, EventArgs e)
+        {
+            Contact user = (Contact)listViewBook.SelectedItems[0].Tag;
+            Clipboard.SetText(user.name);
+        }
+        private void CopyW(object sender, EventArgs e)
         {
             Contact user = (Contact)listViewBook.SelectedItems[0].Tag;
             Clipboard.SetText(user.phoneW);
         }
-        private void menuCopyG_Click(object sender, EventArgs e)
+        private void CopyG(object sender, EventArgs e)
         {
             Contact user = (Contact)listViewBook.SelectedItems[0].Tag;
             Clipboard.SetText(user.phoneG);
         }
-        private void menuCopyM_Click(object sender, EventArgs e)
+        private void CopyM(object sender, EventArgs e)
         {
             Contact user = (Contact)listViewBook.SelectedItems[0].Tag;
             Clipboard.SetText(user.phoneM);
         }
-        private void menuCopyMail_Click(object sender, EventArgs e)
+        private void CopyMail(object sender, EventArgs e)
         {
             Contact user = (Contact)listViewBook.SelectedItems[0].Tag;
             Clipboard.SetText(user.mail);
         }
-        private void menuSendReport_Click(object sender, EventArgs e)
+        private void SendReport(object sender, EventArgs e)
         {
             string name = "";
             if (listViewBook.SelectedItems.Count > 0)
@@ -247,10 +254,21 @@ namespace LDAP_Phone_Book
 
         private void listViewBook_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (e.KeyChar == 27) toolTextSearch.Text = "";
             if (e.KeyChar >= 32)
                 toolTextSearch.Text += e.KeyChar.ToString();
             toolTextSearch.Focus();
             toolTextSearch.SelectionStart = toolTextSearch.Text.Length;
+        }
+        private void toolTextSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+                toolTextSearch.Text = "";
+        }
+        private void toolTextSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 27)
+                toolTextSearch.Text = "";
         }
 
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
@@ -267,5 +285,6 @@ namespace LDAP_Phone_Book
             Properties.Settings.Default.C5 = listViewBook.Columns[5].Width;
             Properties.Settings.Default.Save();
         }
+
     }
 }

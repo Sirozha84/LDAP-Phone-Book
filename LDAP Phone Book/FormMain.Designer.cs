@@ -38,12 +38,13 @@
             this.columnHeaderNum = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderEmail = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.menuSendMail = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmenuSendMail = new System.Windows.Forms.ToolStripMenuItem();
             this.menuSep1 = new System.Windows.Forms.ToolStripSeparator();
-            this.menuCopyW = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuCopyG = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuCopyM = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuCopyMail = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmenuCopyName = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmenuCopyW = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmenuCopyG = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmenuCopyM = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmenuCopyMail = new System.Windows.Forms.ToolStripMenuItem();
             this.menuSep2 = new System.Windows.Forms.ToolStripSeparator();
             this.menuSendReport = new System.Windows.Forms.ToolStripMenuItem();
             this.menu = new System.Windows.Forms.MenuStrip();
@@ -131,61 +132,70 @@
             // contextMenu
             // 
             this.contextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuSendMail,
+            this.cmenuSendMail,
             this.menuSep1,
-            this.menuCopyW,
-            this.menuCopyG,
-            this.menuCopyM,
-            this.menuCopyMail,
+            this.cmenuCopyName,
+            this.cmenuCopyW,
+            this.cmenuCopyG,
+            this.cmenuCopyM,
+            this.cmenuCopyMail,
             this.menuSep2,
             this.menuSendReport});
             this.contextMenu.Name = "contextMenu";
-            this.contextMenu.Size = new System.Drawing.Size(255, 148);
+            this.contextMenu.Size = new System.Drawing.Size(255, 170);
             // 
-            // menuSendMail
+            // cmenuSendMail
             // 
-            this.menuSendMail.Enabled = false;
-            this.menuSendMail.Name = "menuSendMail";
-            this.menuSendMail.Size = new System.Drawing.Size(254, 22);
-            this.menuSendMail.Text = "Отправить письмо";
-            this.menuSendMail.Click += new System.EventHandler(this.menuSendMail_Click);
+            this.cmenuSendMail.Enabled = false;
+            this.cmenuSendMail.Name = "cmenuSendMail";
+            this.cmenuSendMail.Size = new System.Drawing.Size(254, 22);
+            this.cmenuSendMail.Text = "Отправить письмо";
+            this.cmenuSendMail.Click += new System.EventHandler(this.SendMail);
             // 
             // menuSep1
             // 
             this.menuSep1.Name = "menuSep1";
             this.menuSep1.Size = new System.Drawing.Size(251, 6);
             // 
-            // menuCopyW
+            // cmenuCopyName
             // 
-            this.menuCopyW.Enabled = false;
-            this.menuCopyW.Name = "menuCopyW";
-            this.menuCopyW.Size = new System.Drawing.Size(254, 22);
-            this.menuCopyW.Text = "Скопировать внутренний номер";
-            this.menuCopyW.Click += new System.EventHandler(this.menuCopyW_Click);
+            this.cmenuCopyName.Enabled = false;
+            this.cmenuCopyName.Name = "cmenuCopyName";
+            this.cmenuCopyName.Size = new System.Drawing.Size(254, 22);
+            this.cmenuCopyName.Text = "Скопировать ФИО";
+            this.cmenuCopyName.Click += new System.EventHandler(this.CopyName);
             // 
-            // menuCopyG
+            // cmenuCopyW
             // 
-            this.menuCopyG.Enabled = false;
-            this.menuCopyG.Name = "menuCopyG";
-            this.menuCopyG.Size = new System.Drawing.Size(254, 22);
-            this.menuCopyG.Text = "Скопировать городской номер";
-            this.menuCopyG.Click += new System.EventHandler(this.menuCopyG_Click);
+            this.cmenuCopyW.Enabled = false;
+            this.cmenuCopyW.Name = "cmenuCopyW";
+            this.cmenuCopyW.Size = new System.Drawing.Size(254, 22);
+            this.cmenuCopyW.Text = "Скопировать внутренний номер";
+            this.cmenuCopyW.Click += new System.EventHandler(this.CopyW);
             // 
-            // menuCopyM
+            // cmenuCopyG
             // 
-            this.menuCopyM.Enabled = false;
-            this.menuCopyM.Name = "menuCopyM";
-            this.menuCopyM.Size = new System.Drawing.Size(254, 22);
-            this.menuCopyM.Text = "Скопировать мобильный номер";
-            this.menuCopyM.Click += new System.EventHandler(this.menuCopyM_Click);
+            this.cmenuCopyG.Enabled = false;
+            this.cmenuCopyG.Name = "cmenuCopyG";
+            this.cmenuCopyG.Size = new System.Drawing.Size(254, 22);
+            this.cmenuCopyG.Text = "Скопировать городской номер";
+            this.cmenuCopyG.Click += new System.EventHandler(this.CopyG);
             // 
-            // menuCopyMail
+            // cmenuCopyM
             // 
-            this.menuCopyMail.Enabled = false;
-            this.menuCopyMail.Name = "menuCopyMail";
-            this.menuCopyMail.Size = new System.Drawing.Size(254, 22);
-            this.menuCopyMail.Text = "Скопировать Email";
-            this.menuCopyMail.Click += new System.EventHandler(this.menuCopyMail_Click);
+            this.cmenuCopyM.Enabled = false;
+            this.cmenuCopyM.Name = "cmenuCopyM";
+            this.cmenuCopyM.Size = new System.Drawing.Size(254, 22);
+            this.cmenuCopyM.Text = "Скопировать мобильный номер";
+            this.cmenuCopyM.Click += new System.EventHandler(this.CopyM);
+            // 
+            // cmenuCopyMail
+            // 
+            this.cmenuCopyMail.Enabled = false;
+            this.cmenuCopyMail.Name = "cmenuCopyMail";
+            this.cmenuCopyMail.Size = new System.Drawing.Size(254, 22);
+            this.cmenuCopyMail.Text = "Скопировать Email";
+            this.cmenuCopyMail.Click += new System.EventHandler(this.CopyMail);
             // 
             // menuSep2
             // 
@@ -197,7 +207,7 @@
             this.menuSendReport.Name = "menuSendReport";
             this.menuSendReport.Size = new System.Drawing.Size(254, 22);
             this.menuSendReport.Text = "Сообщить о новом контакте";
-            this.menuSendReport.Click += new System.EventHandler(this.menuSendReport_Click);
+            this.menuSendReport.Click += new System.EventHandler(this.SendReport);
             // 
             // menu
             // 
@@ -267,21 +277,21 @@
             // menuFont
             // 
             this.menuFont.Name = "menuFont";
-            this.menuFont.Size = new System.Drawing.Size(180, 22);
+            this.menuFont.Size = new System.Drawing.Size(147, 22);
             this.menuFont.Text = "Шрифт...";
             this.menuFont.Click += new System.EventHandler(this.menuFont_Click);
             // 
             // sep1
             // 
             this.sep1.Name = "sep1";
-            this.sep1.Size = new System.Drawing.Size(177, 6);
+            this.sep1.Size = new System.Drawing.Size(144, 6);
             // 
             // menuRefresh
             // 
             this.menuRefresh.Image = global::LDAP_Phone_Book.Properties.Resources.update;
             this.menuRefresh.Name = "menuRefresh";
             this.menuRefresh.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.menuRefresh.Size = new System.Drawing.Size(180, 22);
+            this.menuRefresh.Size = new System.Drawing.Size(147, 22);
             this.menuRefresh.Text = "Обновить";
             this.menuRefresh.Click += new System.EventHandler(this.menuRefresh_Click);
             // 
@@ -296,7 +306,7 @@
             // menuForceUpdate
             // 
             this.menuForceUpdate.Name = "menuForceUpdate";
-            this.menuForceUpdate.Size = new System.Drawing.Size(180, 22);
+            this.menuForceUpdate.Size = new System.Drawing.Size(170, 22);
             this.menuForceUpdate.Text = "Перечитать LDAP";
             this.menuForceUpdate.Click += new System.EventHandler(this.menuForceUpdate_Click);
             // 
@@ -382,6 +392,8 @@
             this.toolTextSearch.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.toolTextSearch.Name = "toolTextSearch";
             this.toolTextSearch.Size = new System.Drawing.Size(180, 25);
+            this.toolTextSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.toolTextSearch_KeyDown);
+            this.toolTextSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.toolTextSearch_KeyPress);
             this.toolTextSearch.Click += new System.EventHandler(this.toolTextSearch_Click);
             this.toolTextSearch.TextChanged += new System.EventHandler(this.toolTextSearch_TextChanged);
             // 
@@ -436,11 +448,11 @@
         private System.Windows.Forms.ToolStripMenuItem menuForceUpdate;
         private System.Windows.Forms.ColumnHeader columnHeaderPost;
         private System.Windows.Forms.ContextMenuStrip contextMenu;
-        private System.Windows.Forms.ToolStripMenuItem menuCopyMail;
-        private System.Windows.Forms.ToolStripMenuItem menuCopyW;
-        private System.Windows.Forms.ToolStripMenuItem menuCopyG;
-        private System.Windows.Forms.ToolStripMenuItem menuCopyM;
-        private System.Windows.Forms.ToolStripMenuItem menuSendMail;
+        private System.Windows.Forms.ToolStripMenuItem cmenuCopyMail;
+        private System.Windows.Forms.ToolStripMenuItem cmenuCopyW;
+        private System.Windows.Forms.ToolStripMenuItem cmenuCopyG;
+        private System.Windows.Forms.ToolStripMenuItem cmenuCopyM;
+        private System.Windows.Forms.ToolStripMenuItem cmenuSendMail;
         private System.Windows.Forms.ToolStripSeparator menuSep1;
         private System.Windows.Forms.ToolStripSeparator menuSep2;
         private System.Windows.Forms.ToolStripMenuItem menuSendReport;
@@ -460,6 +472,7 @@
         private System.Windows.Forms.ToolStripSeparator sep1;
         private System.Windows.Forms.ToolStripMenuItem menuRefresh;
         private System.Windows.Forms.ToolStripMenuItem menuSave;
+        private System.Windows.Forms.ToolStripMenuItem cmenuCopyName;
     }
 }
 
