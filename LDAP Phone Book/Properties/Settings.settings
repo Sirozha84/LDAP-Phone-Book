@@ -35,5 +35,11 @@
     <Setting Name="C5" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">160</Value>
     </Setting>
+    <Setting Name="FontName" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="FontSize" Type="System.Single" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

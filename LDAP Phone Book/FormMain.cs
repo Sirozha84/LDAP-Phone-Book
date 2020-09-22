@@ -28,6 +28,10 @@ namespace LDAP_Phone_Book
             if (Top < 0) Top = 300;
             Width = Properties.Settings.Default.Width;
             Height = Properties.Settings.Default.Height;
+
+            if (Properties.Settings.Default.FontName != "")
+                listViewBook.Font = new Font(Properties.Settings.Default.FontName, Properties.Settings.Default.FontSize);
+
             listViewBook.Columns[0].Width = Properties.Settings.Default.C0;
             listViewBook.Columns[1].Width = Properties.Settings.Default.C1;
             listViewBook.Columns[2].Width = Properties.Settings.Default.C2;
@@ -144,6 +148,9 @@ namespace LDAP_Phone_Book
             if (dialog.ShowDialog() == DialogResult.OK) 
             {
                 listViewBook.Font = dialog.Font;
+                Properties.Settings.Default.FontName = dialog.Font.Name;
+                Properties.Settings.Default.FontSize = dialog.Font.Size;
+                Properties.Settings.Default.Save();
             }
         }
 
