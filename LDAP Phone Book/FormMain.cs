@@ -260,16 +260,6 @@ namespace LDAP_Phone_Book
             toolTextSearch.Focus();
             toolTextSearch.SelectionStart = toolTextSearch.Text.Length;
         }
-        private void toolTextSearch_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Escape)
-                toolTextSearch.Text = "";
-        }
-        private void toolTextSearch_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == 27)
-                toolTextSearch.Text = "";
-        }
 
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
         {

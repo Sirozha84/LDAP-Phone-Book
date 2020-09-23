@@ -41,10 +41,6 @@
             this.listBoxDates.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.listBoxDates.FormattingEnabled = true;
             this.listBoxDates.ItemHeight = 15;
-            this.listBoxDates.Items.AddRange(new object[] {
-            "28.07.2020",
-            "20.07.2020",
-            "05.03.2020"});
             this.listBoxDates.Location = new System.Drawing.Point(12, 12);
             this.listBoxDates.Name = "listBoxDates";
             this.listBoxDates.Size = new System.Drawing.Size(77, 300);

@@ -306,7 +306,8 @@
             // menuForceUpdate
             // 
             this.menuForceUpdate.Name = "menuForceUpdate";
-            this.menuForceUpdate.Size = new System.Drawing.Size(170, 22);
+            this.menuForceUpdate.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F5)));
+            this.menuForceUpdate.Size = new System.Drawing.Size(216, 22);
             this.menuForceUpdate.Text = "Перечитать LDAP";
             this.menuForceUpdate.Click += new System.EventHandler(this.menuForceUpdate_Click);
             // 
@@ -359,7 +360,7 @@
             // 
             this.toolListComp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.toolListComp.Name = "toolListComp";
-            this.toolListComp.Size = new System.Drawing.Size(180, 25);
+            this.toolListComp.Size = new System.Drawing.Size(200, 25);
             this.toolListComp.SelectedIndexChanged += new System.EventHandler(this.toolListComp_SelectedIndexChanged);
             // 
             // toolLabelDep
@@ -372,7 +373,7 @@
             // 
             this.toolListDep.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.toolListDep.Name = "toolListDep";
-            this.toolListDep.Size = new System.Drawing.Size(180, 25);
+            this.toolListDep.Size = new System.Drawing.Size(200, 25);
             this.toolListDep.SelectedIndexChanged += new System.EventHandler(this.toolListDep_SelectedIndexChanged);
             // 
             // toolReset
@@ -392,8 +393,6 @@
             this.toolTextSearch.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.toolTextSearch.Name = "toolTextSearch";
             this.toolTextSearch.Size = new System.Drawing.Size(180, 25);
-            this.toolTextSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.toolTextSearch_KeyDown);
-            this.toolTextSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.toolTextSearch_KeyPress);
             this.toolTextSearch.Click += new System.EventHandler(this.toolTextSearch_Click);
             this.toolTextSearch.TextChanged += new System.EventHandler(this.toolTextSearch_TextChanged);
             // 
