@@ -9,10 +9,36 @@ namespace LDAP_Phone_Book
     public partial class FormRead : Form
     {
         BackgroundWorker worker = new BackgroundWorker();
-
+        string com = "";
         public FormRead()
         {
             InitializeComponent();
+            radioButtonAll.Checked = Properties.Settings.Default.AllCom;
+            radioButtonSelected.Checked = !Properties.Settings.Default.AllCom;
+            comboBox.DataSource = Data.comps;
+            if (radioButtonSelected.Checked)
+                comboBox.Text = Properties.Settings.Default.Comp;
+        }
+
+        private void Run(object sender, EventArgs e)
+        {
+            if (radioButtonSelected.Checked)
+            {
+                com = comboBox.Text;
+                if (com == "Все") com = "";
+                Properties.Settings.Default.AllCom = false;
+                Properties.Settings.Default.Comp = com;
+                Properties.Settings.Default.Save();
+            }
+            else
+            {
+                Properties.Settings.Default.AllCom = true;
+                Properties.Settings.Default.Save();
+            }
+            radioButtonAll.Enabled = false;
+            radioButtonSelected.Enabled = false;
+            comboBox.Enabled = false;
+            buttonRun.Enabled = false;
             worker.DoWork += new DoWorkEventHandler(AsynkRead);
             worker.ProgressChanged += new ProgressChangedEventHandler(ProgressChange);
             worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(Complate);
@@ -39,7 +65,7 @@ namespace LDAP_Phone_Book
             string PC;
             string description;
 
-        int s = 1;
+            int s = 1;
             SearchResultCollection res = ds.FindAll();
             Data.book = new List<Contact>();
             int i = 0;
@@ -60,8 +86,10 @@ namespace LDAP_Phone_Book
                     try { cabinet = de.Properties["physicaldeliveryofficename"].Value.ToString(); } catch { cabinet = ""; }
                     try { PC = de.Properties["wWWHomePage"].Value.ToString(); } catch { PC = ""; }
                     try { description = de.Properties["description"].Value.ToString(); } catch { description = ""; }
-                    if (mail != "" | phoneW != "" | phoneG != "" | phoneM != "")
-                        Data.book.Add(new Contact(name, company, departament, post, mail, phoneW, phoneG, phoneM, cabinet, PC, description));
+                    if ((mail != "" | phoneW != "" | phoneG != "" | phoneM != "") &&
+                        (com == "" | company == com))
+                        Data.book.Add(new Contact(name, company, departament, post, mail,
+                                                  phoneW, phoneG, phoneM, cabinet, PC, description));
                     s++;
                 }
                 if (i % 100 == 0)
@@ -69,6 +97,7 @@ namespace LDAP_Phone_Book
                 i++;
             }
             Data.Save();
+            DialogResult = DialogResult.OK;
         }
 
         void ProgressChange(object sender, ProgressChangedEventArgs e)
@@ -80,7 +109,12 @@ namespace LDAP_Phone_Book
 
         private void FormRead_FormClosing(object sender, FormClosingEventArgs e)
         {
-            worker.CancelAsync();
+            if (worker.IsBusy) worker.CancelAsync();
+        }
+
+        private void radioButtonAll_CheckedChanged(object sender, EventArgs e)
+        {
+            comboBox.Enabled = radioButtonSelected.Checked;
         }
     }
 }

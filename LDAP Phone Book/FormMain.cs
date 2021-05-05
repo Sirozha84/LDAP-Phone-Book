@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LDAP_Phone_Book
@@ -161,8 +156,7 @@ namespace LDAP_Phone_Book
         private void menuForceUpdate_Click(object sender, EventArgs e)
         {
             FormRead form = new FormRead();
-            form.ShowDialog();
-            Refresh();
+            if (form.ShowDialog() == DialogResult.OK) Refresh();
         }
 
         private void menuNews_Click(object sender, EventArgs e)
@@ -270,6 +264,14 @@ namespace LDAP_Phone_Book
             Properties.Settings.Default.C4 = listViewBook.Columns[4].Width;
             Properties.Settings.Default.C5 = listViewBook.Columns[5].Width;
             Properties.Settings.Default.Save();
+        }
+
+        private void listViewBook_DoubleClick(object sender, EventArgs e)
+        {
+            if (listViewBook.SelectedItems.Count == 0) return;
+            Contact user = (Contact)listViewBook.SelectedItems[0].Tag;
+            FormUser form = new FormUser(user);
+            form.ShowDialog();
         }
 
     }
