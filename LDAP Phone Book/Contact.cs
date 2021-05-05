@@ -6,10 +6,15 @@
         public string company, dep, post;
         public string mail;
         public string phoneW, phoneG, phoneM;
+        public string cabinet;
+        public string PC;
+        public string descriprion;
 
         public Contact() { }
 
-        public Contact(string name, string company, string dep, string post, string mail, string phoneW, string phoneG, string phoneM)
+        public Contact(string name, string company, string dep, string post, string mail, 
+                       string phoneW, string phoneG, string phoneM,
+                       string cabinet, string PC, string descriprion)
         {
             this.name = name;
             this.company = company;
@@ -19,6 +24,9 @@
             this.phoneW = phoneW;
             this.phoneG = phoneG;
             this.phoneM = phoneM;
+            this.cabinet = cabinet;
+            this.PC = PC;
+            this.descriprion = descriprion;
         }
 
     }

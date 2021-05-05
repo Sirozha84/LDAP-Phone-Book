@@ -35,8 +35,11 @@ namespace LDAP_Phone_Book
             string company, departament, post;
             string mail;
             string phoneW, phoneG, phoneM;
+            string cabinet;
+            string PC;
+            string description;
 
-            int s = 1;
+        int s = 1;
             SearchResultCollection res = ds.FindAll();
             Data.book = new List<Contact>();
             int i = 0;
@@ -54,9 +57,11 @@ namespace LDAP_Phone_Book
                     try { phoneW = de.Properties["telephonenumber"].Value.ToString(); } catch { phoneW = ""; }
                     try { phoneG = de.Properties["homePhone"].Value.ToString(); } catch { phoneG = ""; }
                     try { phoneM = de.Properties["mobile"].Value.ToString(); } catch { phoneM = ""; }
-
+                    try { cabinet = de.Properties["physicaldeliveryofficename"].Value.ToString(); } catch { cabinet = ""; }
+                    try { PC = de.Properties["wWWHomePage"].Value.ToString(); } catch { PC = ""; }
+                    try { description = de.Properties["description"].Value.ToString(); } catch { description = ""; }
                     if (mail != "" | phoneW != "" | phoneG != "" | phoneM != "")
-                        Data.book.Add(new Contact(name, company, departament, post, mail, phoneW, phoneG, phoneM));
+                        Data.book.Add(new Contact(name, company, departament, post, mail, phoneW, phoneG, phoneM, cabinet, PC, description));
                     s++;
                 }
                 if (i % 100 == 0)
