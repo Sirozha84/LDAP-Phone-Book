@@ -37,9 +37,9 @@
             this.labelAuthor = new System.Windows.Forms.Label();
             this.labelVersion = new System.Windows.Forms.Label();
             this.labelName = new System.Windows.Forms.Label();
-            this.buttonClose = new System.Windows.Forms.Button();
             this.tabPageHistory = new System.Windows.Forms.TabPage();
             this.history = new System.Windows.Forms.RichTextBox();
+            this.buttonClose = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.tabControl.SuspendLayout();
             this.tabPageAbout.SuspendLayout();
@@ -142,17 +142,6 @@
             this.labelName.TabIndex = 2;
             this.labelName.Text = "LDAP Phone Book";
             // 
-            // buttonClose
-            // 
-            this.buttonClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonClose.Location = new System.Drawing.Point(397, 226);
-            this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(75, 23);
-            this.buttonClose.TabIndex = 1;
-            this.buttonClose.Text = "Закрыть";
-            this.buttonClose.UseVisualStyleBackColor = true;
-            // 
             // tabPageHistory
             // 
             this.tabPageHistory.Controls.Add(this.history);
@@ -176,6 +165,17 @@
             this.history.TabIndex = 0;
             this.history.Text = "";
             // 
+            // buttonClose
+            // 
+            this.buttonClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.buttonClose.Location = new System.Drawing.Point(397, 226);
+            this.buttonClose.Name = "buttonClose";
+            this.buttonClose.Size = new System.Drawing.Size(75, 23);
+            this.buttonClose.TabIndex = 1;
+            this.buttonClose.Text = "Закрыть";
+            this.buttonClose.UseVisualStyleBackColor = true;
+            // 
             // FormAbout
             // 
             this.AcceptButton = this.buttonClose;
@@ -185,10 +185,11 @@
             this.ClientSize = new System.Drawing.Size(484, 261);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.buttonClose);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormAbout";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "О программе";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();

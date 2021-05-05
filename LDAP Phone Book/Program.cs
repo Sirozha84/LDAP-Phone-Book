@@ -6,6 +6,8 @@ namespace LDAP_Phone_Book
 {
     static class Program
     {
+        public const string version = "2.0 (05.05.2021)";
+
         /// <summary>
         /// Главная точка входа для приложения.
         /// </summary>
@@ -14,7 +16,7 @@ namespace LDAP_Phone_Book
         {
             if (param.Count() > 0)
             {
-                Data.LDAPRead();
+                //Data.LDAPRead();  //Была идея запускать чтение из командной строки, чтобы запихать в планировщик задач
                 return;
             }
             

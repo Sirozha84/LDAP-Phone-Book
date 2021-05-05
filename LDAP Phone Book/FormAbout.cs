@@ -12,7 +12,16 @@ namespace LDAP_Phone_Book
             Font fontR = new Font(history.Font.FontFamily, history.Font.Size, FontStyle.Regular);
             Font fontB = new Font(history.Font.FontFamily, history.Font.Size, FontStyle.Bold);
 
-            labelVersion.Text = "Версия: " + Application.ProductVersion;
+            labelVersion.Text = "Версия: " + Program.version;
+
+            history.SelectionFont = fontB;
+            history.AppendText("Версия 2.0 (__.__.2021)\n\n");
+            history.SelectionFont = fontR;
+            history.AppendText("• Отображение прогресса загрузки данных с возможностью отмены\n" +
+                "• \n" +
+                "• \n" +
+                "• \n" +
+                "• \n\n");
 
             history.SelectionFont = fontB;
             history.AppendText("Версия 1.7 (23.09.2020)\n\n");
@@ -22,11 +31,13 @@ namespace LDAP_Phone_Book
                 "• Сброс поиска клавишей Esc (если в фокусе список)\n" +
                 "• Теперь отключенные пользователи не попадают в книгу\n" +
                 "• Новые иконки\n\n");
+            
             history.SelectionFont = fontB;
             history.AppendText("Версия 1.6 (28.07.2020)\n\n");
             history.SelectionFont = fontR;
             history.AppendText("• Исправлена ошибка загрузки приложения в свёрнутом состоянии\n" +
                 "• Немножко уменьшена минимальная ширина окна\n\n");
+            
             history.SelectionFont = fontB; 
             history.AppendText("Версия 1.5 (20.07.2020)\n\n");
             history.SelectionFont = fontR;
@@ -38,12 +49,14 @@ namespace LDAP_Phone_Book
                 "(например если кто-то уже перечитал LDAP, не обязательно это делать ещё раз, достаточно обновить только список)\n" +
                 "• Новое окно для новостей обновлений\n" +
                 "• Исправлено обновление списка компаний и подразделений при обновлении книги (обновлялись только при запуске приложения)\n\n");
+            
             history.SelectionFont = fontB;
             history.AppendText("Версия 1.4 (05.03.2020)\n\n");
             history.SelectionFont = fontR;
             history.AppendText("• Возможность отправлять сообщения об ошибках и предложениях\n" +
                 "• Новости обновлений\n" +
                 "• Исправлена ошибка контекстного меню\n\n");
+            
             history.SelectionFont = fontB;
             history.AppendText("Версия 1.3 (02.03.2020)\n\n");
             history.SelectionFont = fontR;
@@ -55,6 +68,7 @@ namespace LDAP_Phone_Book
                 "• Исправлено формирование списка подразделений (попадали не все)\n" +
                 "• Сортировка списка компаний и подразделений по алфавиту\n" +
                 "• Вот это окно \"О программе\"\n\n");
+            
             history.SelectionFont = fontB;
             history.AppendText("Верися 1.2 (27.02.2020)\n\n");
             history.SelectionFont = fontR;
@@ -66,6 +80,7 @@ namespace LDAP_Phone_Book
                 "• Чтение трёх видов телефонных номеров\n" +
                 "• Фильтры по организациям и подразделениям\n" +
                 "• Поиск по имени или отчеству\n\n");
+            
             history.SelectionFont = fontB;
             history.AppendText("Версия 1.0 (17.02.2020)\n\n");
             history.SelectionFont = fontR;

@@ -39,9 +39,7 @@ namespace LDAP_Phone_Book
             listViewBook.Columns[4].Width = Properties.Settings.Default.C4;
             listViewBook.Columns[5].Width = Properties.Settings.Default.C5;
             
-            Data.Load();
             Refresh();
-            Redraw();
         }
         private void FormMain_Shown(object sender, EventArgs e) 
         {
@@ -51,6 +49,7 @@ namespace LDAP_Phone_Book
 
         void Refresh()
         {
+            Data.Load();
             isProgramUpdate = true;
             //Выпадающие списки с компаниями и подразделениями
             toolListComp.Items.Clear();
@@ -62,6 +61,7 @@ namespace LDAP_Phone_Book
                 toolListDep.Items.Add(d);
             toolListDep.SelectedIndex = 0;
             isProgramUpdate = false;
+            Redraw();
         }
 
         void Redraw()
@@ -156,17 +156,13 @@ namespace LDAP_Phone_Book
             }
         }
 
-        private void menuRefresh_Click(object sender, EventArgs e)
-        {
-            Data.Load();
-            Refresh();
-            Redraw();
-        }
+        private void menuRefresh_Click(object sender, EventArgs e) { Refresh(); }
 
         private void menuForceUpdate_Click(object sender, EventArgs e)
         {
-            Data.LDAPRead();
-            Redraw();
+            FormRead form = new FormRead();
+            form.ShowDialog();
+            Refresh();
         }
 
         private void menuNews_Click(object sender, EventArgs e)
