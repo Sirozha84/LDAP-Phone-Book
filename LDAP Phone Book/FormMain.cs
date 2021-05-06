@@ -102,6 +102,7 @@ namespace LDAP_Phone_Book
                 cmenuCopyM.Enabled = user.phoneM != "";
                 cmenuSendMail.Enabled = user.mail != "";
                 cmenuCopyMail.Enabled = user.mail != "";
+                cmenuConnectToPC.Enabled = user.PC != "";
                 menuSendReport.Text = "Сообщить об ошибке";
             }
             else
@@ -112,6 +113,7 @@ namespace LDAP_Phone_Book
                 cmenuCopyW.Enabled = false;
                 cmenuCopyM.Enabled = false;
                 cmenuCopyMail.Enabled = false;
+                cmenuConnectToPC.Enabled = false;
                 menuSendReport.Text = "Сообщить о новом контакте";
             }
         }
@@ -222,6 +224,19 @@ namespace LDAP_Phone_Book
         {
             Contact user = (Contact)listViewBook.SelectedItems[0].Tag;
             Clipboard.SetText(user.mail);
+        }
+        private void cmenuConnectToPC_Click(object sender, EventArgs e)
+        {
+            Contact user = (Contact)listViewBook.SelectedItems[0].Tag;
+            string mcm= "C:\\Program Files (x86)\\Microsoft Configuration Manager\\AdminConsole\\bin\\i386\\CmRcViewer.exe";
+            try
+            {
+                System.Diagnostics.Process.Start(mcm, user.PC);
+            }
+            catch
+            {
+                MessageBox.Show("Программа \"Удалённое управление MC\" не обнаружена.");
+            }
         }
         private void SendReport(object sender, EventArgs e)
         {

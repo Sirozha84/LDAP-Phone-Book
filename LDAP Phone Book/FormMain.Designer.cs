@@ -46,6 +46,7 @@
             this.cmenuCopyM = new System.Windows.Forms.ToolStripMenuItem();
             this.cmenuCopyMail = new System.Windows.Forms.ToolStripMenuItem();
             this.menuSep2 = new System.Windows.Forms.ToolStripSeparator();
+            this.cmenuConnectToPC = new System.Windows.Forms.ToolStripMenuItem();
             this.menuSendReport = new System.Windows.Forms.ToolStripMenuItem();
             this.menu = new System.Windows.Forms.MenuStrip();
             this.menuFile = new System.Windows.Forms.ToolStripMenuItem();
@@ -141,9 +142,10 @@
             this.cmenuCopyM,
             this.cmenuCopyMail,
             this.menuSep2,
+            this.cmenuConnectToPC,
             this.menuSendReport});
             this.contextMenu.Name = "contextMenu";
-            this.contextMenu.Size = new System.Drawing.Size(255, 192);
+            this.contextMenu.Size = new System.Drawing.Size(255, 214);
             // 
             // cmenuSendMail
             // 
@@ -202,6 +204,14 @@
             // 
             this.menuSep2.Name = "menuSep2";
             this.menuSep2.Size = new System.Drawing.Size(251, 6);
+            // 
+            // cmenuConnectToPC
+            // 
+            this.cmenuConnectToPC.Enabled = false;
+            this.cmenuConnectToPC.Name = "cmenuConnectToPC";
+            this.cmenuConnectToPC.Size = new System.Drawing.Size(254, 22);
+            this.cmenuConnectToPC.Text = "Удалённое управление MC";
+            this.cmenuConnectToPC.Click += new System.EventHandler(this.cmenuConnectToPC_Click);
             // 
             // menuSendReport
             // 
@@ -473,6 +483,7 @@
         private System.Windows.Forms.ToolStripMenuItem menuRefresh;
         private System.Windows.Forms.ToolStripMenuItem menuSave;
         private System.Windows.Forms.ToolStripMenuItem cmenuCopyName;
+        private System.Windows.Forms.ToolStripMenuItem cmenuConnectToPC;
     }
 }
 
