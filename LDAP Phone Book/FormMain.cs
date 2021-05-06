@@ -78,17 +78,11 @@ namespace LDAP_Phone_Book
                     (toolListComp.Text == "Все" || toolListComp.Text == user.company) &
                     (toolListDep.Text == "Все" || toolListDep.Text == user.dep))
                 {
-                    string phones = user.phoneW;
-                    if (phones != "" & user.phoneG != "") phones += ", ";
-                    phones += user.phoneG;
-                    if (phones != "" & user.phoneM != "") phones += ", ";
-                    phones += user.phoneM;
-
                     ListViewItem item = new ListViewItem(user.name);
                     item.SubItems.Add(user.company);
                     item.SubItems.Add(user.dep);
                     item.SubItems.Add(user.post);
-                    item.SubItems.Add(phones);
+                    item.SubItems.Add(user.Phones);
                     item.SubItems.Add(user.mail);
                     item.Tag = user;
                     listViewBook.Items.Add(item);
@@ -103,8 +97,8 @@ namespace LDAP_Phone_Book
             {
                 Contact user = (Contact)listViewBook.SelectedItems[0].Tag;
                 cmenuCopyName.Enabled = true;
-                cmenuCopyW.Enabled = user.phoneW != "";
-                cmenuCopyG.Enabled = user.phoneG != "";
+                cmenuCopyG.Enabled = user.phoneW != "";
+                cmenuCopyW.Enabled = user.phoneG != "";
                 cmenuCopyM.Enabled = user.phoneM != "";
                 cmenuSendMail.Enabled = user.mail != "";
                 cmenuCopyMail.Enabled = user.mail != "";
@@ -114,8 +108,8 @@ namespace LDAP_Phone_Book
             {
                 cmenuCopyName.Enabled = false;
                 cmenuSendMail.Enabled = false;
-                cmenuCopyW.Enabled = false;
                 cmenuCopyG.Enabled = false;
+                cmenuCopyW.Enabled = false;
                 cmenuCopyM.Enabled = false;
                 cmenuCopyMail.Enabled = false;
                 menuSendReport.Text = "Сообщить о новом контакте";
@@ -212,12 +206,12 @@ namespace LDAP_Phone_Book
         private void CopyW(object sender, EventArgs e)
         {
             Contact user = (Contact)listViewBook.SelectedItems[0].Tag;
-            Clipboard.SetText(user.phoneW);
+            Clipboard.SetText(user.phoneG);
         }
         private void CopyG(object sender, EventArgs e)
         {
             Contact user = (Contact)listViewBook.SelectedItems[0].Tag;
-            Clipboard.SetText(user.phoneG);
+            Clipboard.SetText(user.phoneW);
         }
         private void CopyM(object sender, EventArgs e)
         {

@@ -37,10 +37,10 @@ namespace LDAP_Phone_Book
             this.labelDep = new System.Windows.Forms.Label();
             this.textBoxPost = new System.Windows.Forms.TextBox();
             this.labelPost = new System.Windows.Forms.Label();
-            this.textBoxPhoneW = new System.Windows.Forms.TextBox();
-            this.labelPhoneW = new System.Windows.Forms.Label();
             this.textBoxPhoneG = new System.Windows.Forms.TextBox();
-            this.labelPgoneG = new System.Windows.Forms.Label();
+            this.labelPhoneG = new System.Windows.Forms.Label();
+            this.textBoxPhoneW = new System.Windows.Forms.TextBox();
+            this.labelPgoneW = new System.Windows.Forms.Label();
             this.textBoxPhoneM = new System.Windows.Forms.TextBox();
             this.labelPhoneM = new System.Windows.Forms.Label();
             this.textBoxDesc = new System.Windows.Forms.TextBox();
@@ -122,39 +122,39 @@ namespace LDAP_Phone_Book
             this.labelPost.TabIndex = 6;
             this.labelPost.Text = "Должность:";
             // 
-            // textBoxPhoneW
-            // 
-            this.textBoxPhoneW.Location = new System.Drawing.Point(157, 116);
-            this.textBoxPhoneW.Name = "textBoxPhoneW";
-            this.textBoxPhoneW.ReadOnly = true;
-            this.textBoxPhoneW.Size = new System.Drawing.Size(261, 20);
-            this.textBoxPhoneW.TabIndex = 4;
-            // 
-            // labelPhoneW
-            // 
-            this.labelPhoneW.AutoSize = true;
-            this.labelPhoneW.Location = new System.Drawing.Point(11, 119);
-            this.labelPhoneW.Name = "labelPhoneW";
-            this.labelPhoneW.Size = new System.Drawing.Size(99, 13);
-            this.labelPhoneW.TabIndex = 8;
-            this.labelPhoneW.Text = "Телефон рабочий:";
-            // 
             // textBoxPhoneG
             // 
-            this.textBoxPhoneG.Location = new System.Drawing.Point(157, 142);
+            this.textBoxPhoneG.Location = new System.Drawing.Point(157, 116);
             this.textBoxPhoneG.Name = "textBoxPhoneG";
             this.textBoxPhoneG.ReadOnly = true;
             this.textBoxPhoneG.Size = new System.Drawing.Size(261, 20);
-            this.textBoxPhoneG.TabIndex = 5;
+            this.textBoxPhoneG.TabIndex = 4;
             // 
-            // labelPgoneG
+            // labelPhoneG
             // 
-            this.labelPgoneG.AutoSize = true;
-            this.labelPgoneG.Location = new System.Drawing.Point(11, 145);
-            this.labelPgoneG.Name = "labelPgoneG";
-            this.labelPgoneG.Size = new System.Drawing.Size(111, 13);
-            this.labelPgoneG.TabIndex = 10;
-            this.labelPgoneG.Text = "Телефон городской:";
+            this.labelPhoneG.AutoSize = true;
+            this.labelPhoneG.Location = new System.Drawing.Point(11, 119);
+            this.labelPhoneG.Name = "labelPhoneG";
+            this.labelPhoneG.Size = new System.Drawing.Size(111, 13);
+            this.labelPhoneG.TabIndex = 8;
+            this.labelPhoneG.Text = "Телефон городской:";
+            // 
+            // textBoxPhoneW
+            // 
+            this.textBoxPhoneW.Location = new System.Drawing.Point(157, 142);
+            this.textBoxPhoneW.Name = "textBoxPhoneW";
+            this.textBoxPhoneW.ReadOnly = true;
+            this.textBoxPhoneW.Size = new System.Drawing.Size(261, 20);
+            this.textBoxPhoneW.TabIndex = 5;
+            // 
+            // labelPgoneW
+            // 
+            this.labelPgoneW.AutoSize = true;
+            this.labelPgoneW.Location = new System.Drawing.Point(11, 145);
+            this.labelPgoneW.Name = "labelPgoneW";
+            this.labelPgoneW.Size = new System.Drawing.Size(116, 13);
+            this.labelPgoneW.TabIndex = 10;
+            this.labelPgoneW.Text = "Телефон внутренний:";
             // 
             // textBoxPhoneM
             // 
@@ -269,10 +269,10 @@ namespace LDAP_Phone_Book
             this.Controls.Add(this.labelCab);
             this.Controls.Add(this.textBoxPhoneM);
             this.Controls.Add(this.labelPhoneM);
-            this.Controls.Add(this.textBoxPhoneG);
-            this.Controls.Add(this.labelPgoneG);
             this.Controls.Add(this.textBoxPhoneW);
-            this.Controls.Add(this.labelPhoneW);
+            this.Controls.Add(this.labelPgoneW);
+            this.Controls.Add(this.textBoxPhoneG);
+            this.Controls.Add(this.labelPhoneG);
             this.Controls.Add(this.textBoxPost);
             this.Controls.Add(this.labelPost);
             this.Controls.Add(this.textBoxDep);
@@ -304,10 +304,10 @@ namespace LDAP_Phone_Book
         private System.Windows.Forms.Label labelDep;
         private System.Windows.Forms.TextBox textBoxPost;
         private System.Windows.Forms.Label labelPost;
-        private System.Windows.Forms.TextBox textBoxPhoneW;
-        private System.Windows.Forms.Label labelPhoneW;
         private System.Windows.Forms.TextBox textBoxPhoneG;
-        private System.Windows.Forms.Label labelPgoneG;
+        private System.Windows.Forms.Label labelPhoneG;
+        private System.Windows.Forms.TextBox textBoxPhoneW;
+        private System.Windows.Forms.Label labelPgoneW;
         private System.Windows.Forms.TextBox textBoxPhoneM;
         private System.Windows.Forms.Label labelPhoneM;
         private System.Windows.Forms.TextBox textBoxDesc;

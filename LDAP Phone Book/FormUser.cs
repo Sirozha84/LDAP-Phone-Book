@@ -12,8 +12,8 @@ namespace LDAP_Phone_Book
             textBoxCom.Text = user.company;
             textBoxDep.Text = user.dep;
             textBoxPost.Text = user.dep;
-            textBoxPhoneW.Text = user.phoneW;
             textBoxPhoneG.Text = user.phoneG;
+            textBoxPhoneW.Text = user.phoneW;
             textBoxPhoneM.Text = user.phoneM;
             textBoxEmail.Text = user.mail;
             textBoxCab.Text = user.cabinet;

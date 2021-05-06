@@ -60,7 +60,7 @@ namespace LDAP_Phone_Book
             string name;
             string company, departament, post;
             string mail;
-            string phoneW, phoneG, phoneM;
+            string phoneG, phoneW, phoneM;
             string cabinet;
             string PC;
             string description;
@@ -80,8 +80,8 @@ namespace LDAP_Phone_Book
                     try { departament = de.Properties["department"].Value.ToString(); } catch { departament = ""; }
                     try { post = de.Properties["title"].Value.ToString(); } catch { post = ""; }
                     try { mail = de.Properties["mail"].Value.ToString(); } catch { mail = ""; }
-                    try { phoneW = de.Properties["telephonenumber"].Value.ToString(); } catch { phoneW = ""; }
-                    try { phoneG = de.Properties["homePhone"].Value.ToString(); } catch { phoneG = ""; }
+                    try { phoneG = de.Properties["telephonenumber"].Value.ToString(); } catch { phoneG = ""; }
+                    try { phoneW = de.Properties["homePhone"].Value.ToString(); } catch { phoneW = ""; }
                     try { phoneM = de.Properties["mobile"].Value.ToString(); } catch { phoneM = ""; }
                     try { cabinet = de.Properties["physicaldeliveryofficename"].Value.ToString(); } catch { cabinet = ""; }
                     try { PC = de.Properties["wWWHomePage"].Value.ToString(); } catch { PC = ""; }
@@ -89,7 +89,7 @@ namespace LDAP_Phone_Book
                     if ((mail != "" | phoneW != "" | phoneG != "" | phoneM != "") &&
                         (com == "" | company == com))
                         Data.book.Add(new Contact(name, company, departament, post, mail,
-                                                  phoneW, phoneG, phoneM, cabinet, PC, description));
+                                                  phoneG, phoneW, phoneM, cabinet, PC, description));
                     s++;
                 }
                 if (i % 100 == 0)
