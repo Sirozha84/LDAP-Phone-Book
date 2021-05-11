@@ -6,7 +6,7 @@ namespace LDAP_Phone_Book
 {
     static class Program
     {
-        public const string version = "2.0 (05.05.2021)";
+        public const string version = "2.0 (11.05.2021)";
 
         /// <summary>
         /// Главная точка входа для приложения.

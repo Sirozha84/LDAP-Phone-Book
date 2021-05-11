@@ -15,13 +15,11 @@ namespace LDAP_Phone_Book
             labelVersion.Text = "Версия: " + Program.version;
 
             history.SelectionFont = fontB;
-            history.AppendText("Версия 2.0 (__.__.2021)\n\n");
+            history.AppendText("Версия 2.0 (11.05.2021)\n\n");
             history.SelectionFont = fontR;
             history.AppendText("• Отображение прогресса загрузки данных с возможностью отмены\n" +
-                "• \n" +
-                "• \n" +
-                "• \n" +
-                "• \n\n");
+                "• Возможность подключиться к ПК через \"Удалённое управление MC\"\n" +
+                "• Загрузка данных с фильтром по определённой организации\n\n");
 
             history.SelectionFont = fontB;
             history.AppendText("Версия 1.7 (23.09.2020)\n\n");

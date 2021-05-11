@@ -102,7 +102,6 @@
             this.linkLabelSite.TabIndex = 6;
             this.linkLabelSite.TabStop = true;
             this.linkLabelSite.Text = "www.sg-software.ru";
-            this.linkLabelSite.Visible = false;
             this.linkLabelSite.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel1_LinkClicked);
             // 
             // labelInfo
@@ -187,6 +186,7 @@
             this.Controls.Add(this.buttonClose);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(500, 300);
             this.Name = "FormAbout";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
