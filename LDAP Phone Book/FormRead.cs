@@ -86,7 +86,7 @@ namespace LDAP_Phone_Book
                     try { cabinet = de.Properties["physicaldeliveryofficename"].Value.ToString(); } catch { cabinet = ""; }
                     try { PC = de.Properties["wWWHomePage"].Value.ToString(); } catch { PC = ""; }
                     try { description = de.Properties["description"].Value.ToString(); } catch { description = ""; }
-                    if ((mail != "" | phoneW != "" | phoneG != "" | phoneM != "") &&
+                    if ((mail != "" | phoneW != "" | phoneG != "" | phoneM != "" | PC != "") &&
                         (com == "" | company == com))
                         Data.book.Add(new Contact(name, company, departament, post, mail,
                                                   phoneG, phoneW, phoneM, cabinet, PC, description));

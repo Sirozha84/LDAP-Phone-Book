@@ -89,9 +89,9 @@
             // 
             this.labelKE26.Location = new System.Drawing.Point(182, 118);
             this.labelKE26.Name = "labelKE26";
-            this.labelKE26.Size = new System.Drawing.Size(226, 43);
+            this.labelKE26.Size = new System.Drawing.Size(226, 30);
             this.labelKE26.TabIndex = 7;
-            this.labelKE26.Text = "Приложение разработано специально для компании ООО \"Красэко-Электро\"";
+            this.labelKE26.Text = "Новую версию этой и других моих программ Вы можете загрузить на сайте";
             // 
             // linkLabelSite
             // 
