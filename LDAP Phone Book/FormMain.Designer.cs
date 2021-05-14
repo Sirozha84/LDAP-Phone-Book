@@ -71,6 +71,8 @@
             this.toolReset = new System.Windows.Forms.ToolStripButton();
             this.toolTextSearch = new System.Windows.Forms.ToolStripTextBox();
             this.toolLabelSearch = new System.Windows.Forms.ToolStripLabel();
+            this.cmenuPing = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmenuSkype = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenu.SuspendLayout();
             this.menu.SuspendLayout();
             this.toolStrip.SuspendLayout();
@@ -135,6 +137,9 @@
             // 
             this.contextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cmenuSendMail,
+            this.cmenuConnectToPC,
+            this.cmenuSkype,
+            this.cmenuPing,
             this.menuSep1,
             this.cmenuCopyName,
             this.cmenuCopyG,
@@ -142,10 +147,9 @@
             this.cmenuCopyM,
             this.cmenuCopyMail,
             this.menuSep2,
-            this.cmenuConnectToPC,
             this.menuSendReport});
             this.contextMenu.Name = "contextMenu";
-            this.contextMenu.Size = new System.Drawing.Size(255, 214);
+            this.contextMenu.Size = new System.Drawing.Size(255, 258);
             // 
             // cmenuSendMail
             // 
@@ -249,7 +253,7 @@
             this.menuSave.Image = global::LDAP_Phone_Book.Properties.Resources.save;
             this.menuSave.Name = "menuSave";
             this.menuSave.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.menuSave.Size = new System.Drawing.Size(181, 22);
+            this.menuSave.Size = new System.Drawing.Size(182, 22);
             this.menuSave.Text = "Сохранить...";
             this.menuSave.Click += new System.EventHandler(this.menuSave_Click);
             // 
@@ -258,20 +262,20 @@
             this.menuPrint.Image = global::LDAP_Phone_Book.Properties.Resources.printer;
             this.menuPrint.Name = "menuPrint";
             this.menuPrint.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.menuPrint.Size = new System.Drawing.Size(181, 22);
+            this.menuPrint.Size = new System.Drawing.Size(182, 22);
             this.menuPrint.Text = "Печать...";
             this.menuPrint.Click += new System.EventHandler(this.menuPrint_Click);
             // 
             // sep2
             // 
             this.sep2.Name = "sep2";
-            this.sep2.Size = new System.Drawing.Size(178, 6);
+            this.sep2.Size = new System.Drawing.Size(179, 6);
             // 
             // menuExit
             // 
             this.menuExit.Name = "menuExit";
             this.menuExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.menuExit.Size = new System.Drawing.Size(181, 22);
+            this.menuExit.Size = new System.Drawing.Size(182, 22);
             this.menuExit.Text = "Выход";
             this.menuExit.Click += new System.EventHandler(this.menuExit_Click);
             // 
@@ -402,6 +406,7 @@
             // toolTextSearch
             // 
             this.toolTextSearch.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolTextSearch.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolTextSearch.Name = "toolTextSearch";
             this.toolTextSearch.Size = new System.Drawing.Size(180, 25);
             this.toolTextSearch.Click += new System.EventHandler(this.toolTextSearch_Click);
@@ -415,6 +420,22 @@
             this.toolLabelSearch.Name = "toolLabelSearch";
             this.toolLabelSearch.Size = new System.Drawing.Size(16, 22);
             this.toolLabelSearch.Text = "Поиск:";
+            // 
+            // cmenuPing
+            // 
+            this.cmenuPing.Enabled = false;
+            this.cmenuPing.Name = "cmenuPing";
+            this.cmenuPing.Size = new System.Drawing.Size(254, 22);
+            this.cmenuPing.Text = "Ping";
+            this.cmenuPing.Click += new System.EventHandler(this.cmenuPing_Click);
+            // 
+            // cmenuSkype
+            // 
+            this.cmenuSkype.Enabled = false;
+            this.cmenuSkype.Name = "cmenuSkype";
+            this.cmenuSkype.Size = new System.Drawing.Size(254, 22);
+            this.cmenuSkype.Text = "Написать в Skype для бизнеса";
+            this.cmenuSkype.Click += new System.EventHandler(this.cmenuSkype_Click);
             // 
             // FormMain
             // 
@@ -484,6 +505,8 @@
         private System.Windows.Forms.ToolStripMenuItem menuSave;
         private System.Windows.Forms.ToolStripMenuItem cmenuCopyName;
         private System.Windows.Forms.ToolStripMenuItem cmenuConnectToPC;
+        private System.Windows.Forms.ToolStripMenuItem cmenuSkype;
+        private System.Windows.Forms.ToolStripMenuItem cmenuPing;
     }
 }
 

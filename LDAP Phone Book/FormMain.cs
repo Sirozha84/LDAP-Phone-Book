@@ -96,24 +96,32 @@ namespace LDAP_Phone_Book
             if (listViewBook.SelectedItems.Count > 0)
             {
                 Contact user = (Contact)listViewBook.SelectedItems[0].Tag;
+                cmenuSendMail.Enabled = user.mail != "";
+                cmenuConnectToPC.Enabled = user.PC != "";
+                cmenuSkype.Enabled = user.mail != "";
+                cmenuPing.Enabled = user.PC != "";
+
                 cmenuCopyName.Enabled = true;
                 cmenuCopyG.Enabled = user.phoneW != "";
                 cmenuCopyW.Enabled = user.phoneG != "";
                 cmenuCopyM.Enabled = user.phoneM != "";
-                cmenuSendMail.Enabled = user.mail != "";
                 cmenuCopyMail.Enabled = user.mail != "";
-                cmenuConnectToPC.Enabled = user.PC != "";
+                
                 menuSendReport.Text = "Сообщить об ошибке";
             }
             else
             {
-                cmenuCopyName.Enabled = false;
                 cmenuSendMail.Enabled = false;
+                cmenuConnectToPC.Enabled = false;
+                cmenuSkype.Enabled = false;
+                cmenuPing.Enabled = false;
+
+                cmenuCopyName.Enabled = false;
                 cmenuCopyG.Enabled = false;
                 cmenuCopyW.Enabled = false;
                 cmenuCopyM.Enabled = false;
                 cmenuCopyMail.Enabled = false;
-                cmenuConnectToPC.Enabled = false;
+                
                 menuSendReport.Text = "Сообщить о новом контакте";
             }
         }
@@ -200,6 +208,45 @@ namespace LDAP_Phone_Book
             Contact user = (Contact)listViewBook.SelectedItems[0].Tag;
             System.Diagnostics.Process.Start("mailto:" + user.mail);
         }
+        private void cmenuConnectToPC_Click(object sender, EventArgs e)
+        {
+            Contact user = (Contact)listViewBook.SelectedItems[0].Tag;
+            string mcm = "C:\\Program Files (x86)\\Microsoft Configuration Manager\\AdminConsole\\bin\\i386\\CmRcViewer.exe";
+            try
+            {
+                System.Diagnostics.Process.Start(mcm, user.PC);
+            }
+            catch
+            {
+                MessageBox.Show("Программа \"Удалённое управление MC\" не обнаружена.");
+            }
+        }
+        private void cmenuSkype_Click(object sender, EventArgs e)
+        {
+            Contact user = (Contact)listViewBook.SelectedItems[0].Tag;
+            string lync = "C:\\Program Files (x86)\\Microsoft Office\\Office16\\lync.exe";
+            try
+            {
+                System.Diagnostics.Process.Start(lync, "sip:" + user.mail);
+            }
+            catch
+            {
+                MessageBox.Show("Программа \"Skype для бизнеса\" не обнаружена.");
+            }
+        }
+
+        private void cmenuPing_Click(object sender, EventArgs e)
+        {
+            Contact user = (Contact)listViewBook.SelectedItems[0].Tag;
+            try
+            {
+                System.Diagnostics.Process.Start("ping", user.PC + " -t");
+            }
+            catch
+            {
+                MessageBox.Show("Произошла непредвиденная ошибка.");
+            }
+        }
         private void CopyName(object sender, EventArgs e)
         {
             Contact user = (Contact)listViewBook.SelectedItems[0].Tag;
@@ -224,19 +271,6 @@ namespace LDAP_Phone_Book
         {
             Contact user = (Contact)listViewBook.SelectedItems[0].Tag;
             Clipboard.SetText(user.mail);
-        }
-        private void cmenuConnectToPC_Click(object sender, EventArgs e)
-        {
-            Contact user = (Contact)listViewBook.SelectedItems[0].Tag;
-            string mcm= "C:\\Program Files (x86)\\Microsoft Configuration Manager\\AdminConsole\\bin\\i386\\CmRcViewer.exe";
-            try
-            {
-                System.Diagnostics.Process.Start(mcm, user.PC);
-            }
-            catch
-            {
-                MessageBox.Show("Программа \"Удалённое управление MC\" не обнаружена.");
-            }
         }
         private void SendReport(object sender, EventArgs e)
         {
@@ -282,6 +316,7 @@ namespace LDAP_Phone_Book
             FormUser form = new FormUser(user);
             form.ShowDialog();
         }
+
 
     }
 }
