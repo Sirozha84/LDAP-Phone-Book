@@ -62,7 +62,7 @@ namespace LDAP_Phone_Book
             try
             {
                 StreamWriter file = new StreamWriter(fileName, false, Encoding.Default);
-                file.WriteLine("ФИО;Организация;Подразделение;Внутренний;Внешний;Мобильный;Электронная почта");
+                file.WriteLine("ФИО;Организация;Подразделение;Внутренний;Внешний;Мобильный;Электронная почта;Компьютер");
                 foreach (Contact contact in book)
                 {
                     string s = contact.name + ";";
@@ -71,7 +71,8 @@ namespace LDAP_Phone_Book
                     s += contact.phoneW + ";";
                     s += contact.phoneG + ";";
                     s += contact.phoneM + ";";
-                    s += contact.mail;
+                    s += contact.mail + ";";
+                    s += contact.PC;
                     file.WriteLine(s);
                 }
                 file.Close();
