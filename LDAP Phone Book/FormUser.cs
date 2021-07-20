@@ -8,17 +8,17 @@ namespace LDAP_Phone_Book
         {
             InitializeComponent();
             Text = "Контакт: " + user.name;
-            textBoxFIO.Text = user.name;
-            textBoxCom.Text = user.company;
-            textBoxDep.Text = user.dep;
-            textBoxPost.Text = user.dep;
-            textBoxPhoneG.Text = user.phoneG;
-            textBoxPhoneW.Text = user.phoneW;
-            textBoxPhoneM.Text = user.phoneM;
-            textBoxEmail.Text = user.mail;
-            textBoxCab.Text = user.cabinet;
-            textBoxPC.Text = user.PC;
-            textBoxDesc.Text = user.descriprion;
+            textFIO.Text = user.name;
+            textCom.Text = user.company;
+            textDep.Text = user.dep;
+            textPost.Text = user.post;
+            textPhoneG.Text = user.phoneG;
+            textPhoneW.Text = user.phoneW;
+            textPhoneM.Text = user.phoneM;
+            textEmail.Text = user.mail;
+            textCab.Text = user.cabinet;
+            textPC.Text = user.PC;
+            textDesc.Text = user.descriprion;
         }
     }
 }
