@@ -98,6 +98,7 @@ namespace LDAP_Phone_Book
                 Contact user = (Contact)listViewBook.SelectedItems[0].Tag;
                 cmenuSendMail.Enabled = user.mail != "";
                 cmenuConnectToPC.Enabled = user.PC != "";
+                cmenuOpenDesktop.Enabled = user.PC != "" & user.mail != "";
                 cmenuSkype.Enabled = user.mail != "";
                 cmenuPing.Enabled = user.PC != "";
 
@@ -113,6 +114,7 @@ namespace LDAP_Phone_Book
             {
                 cmenuSendMail.Enabled = false;
                 cmenuConnectToPC.Enabled = false;
+                cmenuOpenDesktop.Enabled = false;
                 cmenuSkype.Enabled = false;
                 cmenuPing.Enabled = false;
 
@@ -221,6 +223,14 @@ namespace LDAP_Phone_Book
                 MessageBox.Show("Программа \"Удалённое управление MC\" не обнаружена.");
             }
         }
+
+        private void cmenuOpenDesktop_Click(object sender, EventArgs e)
+        {
+            Contact user = (Contact)listViewBook.SelectedItems[0].Tag;
+            string path = @"\\"+user.PC+@"\c$\Users\"+ user.mail.Split('@')[0]+@"\Desktop";
+            System.Diagnostics.Process.Start(path);
+        }
+
         private void cmenuSkype_Click(object sender, EventArgs e)
         {
             Contact user = (Contact)listViewBook.SelectedItems[0].Tag;
@@ -316,7 +326,6 @@ namespace LDAP_Phone_Book
             FormUser form = new FormUser(user);
             form.ShowDialog();
         }
-
 
     }
 }

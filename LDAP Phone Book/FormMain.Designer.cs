@@ -39,6 +39,9 @@
             this.columnHeaderEmail = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.cmenuSendMail = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmenuConnectToPC = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmenuSkype = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmenuPing = new System.Windows.Forms.ToolStripMenuItem();
             this.menuSep1 = new System.Windows.Forms.ToolStripSeparator();
             this.cmenuCopyName = new System.Windows.Forms.ToolStripMenuItem();
             this.cmenuCopyG = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,7 +49,6 @@
             this.cmenuCopyM = new System.Windows.Forms.ToolStripMenuItem();
             this.cmenuCopyMail = new System.Windows.Forms.ToolStripMenuItem();
             this.menuSep2 = new System.Windows.Forms.ToolStripSeparator();
-            this.cmenuConnectToPC = new System.Windows.Forms.ToolStripMenuItem();
             this.menuSendReport = new System.Windows.Forms.ToolStripMenuItem();
             this.menu = new System.Windows.Forms.MenuStrip();
             this.menuFile = new System.Windows.Forms.ToolStripMenuItem();
@@ -71,8 +73,7 @@
             this.toolReset = new System.Windows.Forms.ToolStripButton();
             this.toolTextSearch = new System.Windows.Forms.ToolStripTextBox();
             this.toolLabelSearch = new System.Windows.Forms.ToolStripLabel();
-            this.cmenuPing = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmenuSkype = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmenuOpenDesktop = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenu.SuspendLayout();
             this.menu.SuspendLayout();
             this.toolStrip.SuspendLayout();
@@ -138,6 +139,7 @@
             this.contextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cmenuSendMail,
             this.cmenuConnectToPC,
+            this.cmenuOpenDesktop,
             this.cmenuSkype,
             this.cmenuPing,
             this.menuSep1,
@@ -158,6 +160,30 @@
             this.cmenuSendMail.Size = new System.Drawing.Size(254, 22);
             this.cmenuSendMail.Text = "Отправить письмо";
             this.cmenuSendMail.Click += new System.EventHandler(this.SendMail);
+            // 
+            // cmenuConnectToPC
+            // 
+            this.cmenuConnectToPC.Enabled = false;
+            this.cmenuConnectToPC.Name = "cmenuConnectToPC";
+            this.cmenuConnectToPC.Size = new System.Drawing.Size(254, 22);
+            this.cmenuConnectToPC.Text = "Удалённое управление MC";
+            this.cmenuConnectToPC.Click += new System.EventHandler(this.cmenuConnectToPC_Click);
+            // 
+            // cmenuSkype
+            // 
+            this.cmenuSkype.Enabled = false;
+            this.cmenuSkype.Name = "cmenuSkype";
+            this.cmenuSkype.Size = new System.Drawing.Size(254, 22);
+            this.cmenuSkype.Text = "Написать в Skype для бизнеса";
+            this.cmenuSkype.Click += new System.EventHandler(this.cmenuSkype_Click);
+            // 
+            // cmenuPing
+            // 
+            this.cmenuPing.Enabled = false;
+            this.cmenuPing.Name = "cmenuPing";
+            this.cmenuPing.Size = new System.Drawing.Size(254, 22);
+            this.cmenuPing.Text = "Ping";
+            this.cmenuPing.Click += new System.EventHandler(this.cmenuPing_Click);
             // 
             // menuSep1
             // 
@@ -208,14 +234,6 @@
             // 
             this.menuSep2.Name = "menuSep2";
             this.menuSep2.Size = new System.Drawing.Size(251, 6);
-            // 
-            // cmenuConnectToPC
-            // 
-            this.cmenuConnectToPC.Enabled = false;
-            this.cmenuConnectToPC.Name = "cmenuConnectToPC";
-            this.cmenuConnectToPC.Size = new System.Drawing.Size(254, 22);
-            this.cmenuConnectToPC.Text = "Удалённое управление MC";
-            this.cmenuConnectToPC.Click += new System.EventHandler(this.cmenuConnectToPC_Click);
             // 
             // menuSendReport
             // 
@@ -406,7 +424,6 @@
             // toolTextSearch
             // 
             this.toolTextSearch.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolTextSearch.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolTextSearch.Name = "toolTextSearch";
             this.toolTextSearch.Size = new System.Drawing.Size(180, 25);
             this.toolTextSearch.Click += new System.EventHandler(this.toolTextSearch_Click);
@@ -421,21 +438,13 @@
             this.toolLabelSearch.Size = new System.Drawing.Size(16, 22);
             this.toolLabelSearch.Text = "Поиск:";
             // 
-            // cmenuPing
+            // cmenuOpenDesktop
             // 
-            this.cmenuPing.Enabled = false;
-            this.cmenuPing.Name = "cmenuPing";
-            this.cmenuPing.Size = new System.Drawing.Size(254, 22);
-            this.cmenuPing.Text = "Ping";
-            this.cmenuPing.Click += new System.EventHandler(this.cmenuPing_Click);
-            // 
-            // cmenuSkype
-            // 
-            this.cmenuSkype.Enabled = false;
-            this.cmenuSkype.Name = "cmenuSkype";
-            this.cmenuSkype.Size = new System.Drawing.Size(254, 22);
-            this.cmenuSkype.Text = "Написать в Skype для бизнеса";
-            this.cmenuSkype.Click += new System.EventHandler(this.cmenuSkype_Click);
+            this.cmenuOpenDesktop.Enabled = false;
+            this.cmenuOpenDesktop.Name = "cmenuOpenDesktop";
+            this.cmenuOpenDesktop.Size = new System.Drawing.Size(254, 22);
+            this.cmenuOpenDesktop.Text = "Открыть папку рабочего стола";
+            this.cmenuOpenDesktop.Click += new System.EventHandler(this.cmenuOpenDesktop_Click);
             // 
             // FormMain
             // 
@@ -507,6 +516,7 @@
         private System.Windows.Forms.ToolStripMenuItem cmenuConnectToPC;
         private System.Windows.Forms.ToolStripMenuItem cmenuSkype;
         private System.Windows.Forms.ToolStripMenuItem cmenuPing;
+        private System.Windows.Forms.ToolStripMenuItem cmenuOpenDesktop;
     }
 }
 
