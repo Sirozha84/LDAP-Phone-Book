@@ -38,6 +38,11 @@
             this.columnHeaderNum = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderEmail = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cmenuSendMail = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmenuSkype = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmenuConnectToPC = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmenuOpenDesktop = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmenuPing = new System.Windows.Forms.ToolStripMenuItem();
             this.menuSep1 = new System.Windows.Forms.ToolStripSeparator();
             this.cmenuCopyName = new System.Windows.Forms.ToolStripMenuItem();
             this.cmenuCopyG = new System.Windows.Forms.ToolStripMenuItem();
@@ -66,11 +71,6 @@
             this.toolReset = new System.Windows.Forms.ToolStripButton();
             this.toolTextSearch = new System.Windows.Forms.ToolStripTextBox();
             this.toolLabelSearch = new System.Windows.Forms.ToolStripLabel();
-            this.cmenuSendMail = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmenuSkype = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmenuConnectToPC = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmenuOpenDesktop = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmenuPing = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenu.SuspendLayout();
             this.menu.SuspendLayout();
             this.toolStrip.SuspendLayout();
@@ -147,6 +147,52 @@
             this.cmenuCopyMail});
             this.contextMenu.Name = "contextMenu";
             this.contextMenu.Size = new System.Drawing.Size(255, 230);
+            // 
+            // cmenuSendMail
+            // 
+            this.cmenuSendMail.Enabled = false;
+            this.cmenuSendMail.Image = ((System.Drawing.Image)(resources.GetObject("cmenuSendMail.Image")));
+            this.cmenuSendMail.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.cmenuSendMail.Name = "cmenuSendMail";
+            this.cmenuSendMail.Size = new System.Drawing.Size(254, 22);
+            this.cmenuSendMail.Text = "Отправить письмо";
+            this.cmenuSendMail.Click += new System.EventHandler(this.SendMail);
+            // 
+            // cmenuSkype
+            // 
+            this.cmenuSkype.Enabled = false;
+            this.cmenuSkype.Image = global::LDAP_Phone_Book.Properties.Resources.skype;
+            this.cmenuSkype.Name = "cmenuSkype";
+            this.cmenuSkype.Size = new System.Drawing.Size(254, 22);
+            this.cmenuSkype.Text = "Написать в Skype для бизнеса";
+            this.cmenuSkype.Click += new System.EventHandler(this.cmenuSkype_Click);
+            // 
+            // cmenuConnectToPC
+            // 
+            this.cmenuConnectToPC.Enabled = false;
+            this.cmenuConnectToPC.Image = global::LDAP_Phone_Book.Properties.Resources.cm;
+            this.cmenuConnectToPC.Name = "cmenuConnectToPC";
+            this.cmenuConnectToPC.Size = new System.Drawing.Size(254, 22);
+            this.cmenuConnectToPC.Text = "Удалённое управление MC";
+            this.cmenuConnectToPC.Click += new System.EventHandler(this.cmenuConnectToPC_Click);
+            // 
+            // cmenuOpenDesktop
+            // 
+            this.cmenuOpenDesktop.Enabled = false;
+            this.cmenuOpenDesktop.Image = global::LDAP_Phone_Book.Properties.Resources.desktop;
+            this.cmenuOpenDesktop.Name = "cmenuOpenDesktop";
+            this.cmenuOpenDesktop.Size = new System.Drawing.Size(254, 22);
+            this.cmenuOpenDesktop.Text = "Открыть папку рабочего стола";
+            this.cmenuOpenDesktop.Click += new System.EventHandler(this.cmenuOpenDesktop_Click);
+            // 
+            // cmenuPing
+            // 
+            this.cmenuPing.Enabled = false;
+            this.cmenuPing.Image = global::LDAP_Phone_Book.Properties.Resources.cmd;
+            this.cmenuPing.Name = "cmenuPing";
+            this.cmenuPing.Size = new System.Drawing.Size(254, 22);
+            this.cmenuPing.Text = "Ping";
+            this.cmenuPing.Click += new System.EventHandler(this.cmenuPing_Click);
             // 
             // menuSep1
             // 
@@ -353,6 +399,7 @@
             // 
             this.toolReset.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.toolReset.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolReset.Image = global::LDAP_Phone_Book.Properties.Resources.clear;
             this.toolReset.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolReset.Name = "toolReset";
             this.toolReset.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -363,6 +410,7 @@
             // toolTextSearch
             // 
             this.toolTextSearch.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolTextSearch.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolTextSearch.Name = "toolTextSearch";
             this.toolTextSearch.Size = new System.Drawing.Size(180, 25);
             this.toolTextSearch.Click += new System.EventHandler(this.toolTextSearch_Click);
@@ -372,55 +420,10 @@
             // 
             this.toolLabelSearch.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.toolLabelSearch.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolLabelSearch.Image = global::LDAP_Phone_Book.Properties.Resources.search;
             this.toolLabelSearch.Name = "toolLabelSearch";
-            this.toolLabelSearch.Size = new System.Drawing.Size(0, 22);
+            this.toolLabelSearch.Size = new System.Drawing.Size(16, 22);
             this.toolLabelSearch.Text = "Поиск:";
-            // 
-            // cmenuSendMail
-            // 
-            this.cmenuSendMail.Enabled = false;
-            this.cmenuSendMail.Image = ((System.Drawing.Image)(resources.GetObject("cmenuSendMail.Image")));
-            this.cmenuSendMail.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.cmenuSendMail.Name = "cmenuSendMail";
-            this.cmenuSendMail.Size = new System.Drawing.Size(254, 22);
-            this.cmenuSendMail.Text = "Отправить письмо";
-            this.cmenuSendMail.Click += new System.EventHandler(this.SendMail);
-            // 
-            // cmenuSkype
-            // 
-            this.cmenuSkype.Enabled = false;
-            this.cmenuSkype.Image = global::LDAP_Phone_Book.Properties.Resources.skype;
-            this.cmenuSkype.Name = "cmenuSkype";
-            this.cmenuSkype.Size = new System.Drawing.Size(254, 22);
-            this.cmenuSkype.Text = "Написать в Skype для бизнеса";
-            this.cmenuSkype.Click += new System.EventHandler(this.cmenuSkype_Click);
-            // 
-            // cmenuConnectToPC
-            // 
-            this.cmenuConnectToPC.Enabled = false;
-            this.cmenuConnectToPC.Image = global::LDAP_Phone_Book.Properties.Resources.cm;
-            this.cmenuConnectToPC.Name = "cmenuConnectToPC";
-            this.cmenuConnectToPC.Size = new System.Drawing.Size(254, 22);
-            this.cmenuConnectToPC.Text = "Удалённое управление MC";
-            this.cmenuConnectToPC.Click += new System.EventHandler(this.cmenuConnectToPC_Click);
-            // 
-            // cmenuOpenDesktop
-            // 
-            this.cmenuOpenDesktop.Enabled = false;
-            this.cmenuOpenDesktop.Image = global::LDAP_Phone_Book.Properties.Resources.desktop;
-            this.cmenuOpenDesktop.Name = "cmenuOpenDesktop";
-            this.cmenuOpenDesktop.Size = new System.Drawing.Size(254, 22);
-            this.cmenuOpenDesktop.Text = "Открыть папку рабочего стола";
-            this.cmenuOpenDesktop.Click += new System.EventHandler(this.cmenuOpenDesktop_Click);
-            // 
-            // cmenuPing
-            // 
-            this.cmenuPing.Enabled = false;
-            this.cmenuPing.Image = global::LDAP_Phone_Book.Properties.Resources.cmd;
-            this.cmenuPing.Name = "cmenuPing";
-            this.cmenuPing.Size = new System.Drawing.Size(254, 22);
-            this.cmenuPing.Text = "Ping";
-            this.cmenuPing.Click += new System.EventHandler(this.cmenuPing_Click);
             // 
             // FormMain
             // 
