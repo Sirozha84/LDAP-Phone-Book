@@ -63,12 +63,6 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormNews.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormNews.Designer.cs">
-      <DependentUpon>FormNews.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormRead.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,9 +90,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormNews.resx">
-      <DependentUpon>FormNews.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormRead.resx">
       <DependentUpon>FormRead.cs</DependentUpon>
@@ -134,6 +125,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Phone Book.ico" />
+    <None Include="Resources\cmd.png" />
+    <None Include="Resources\desktop.png" />
+    <None Include="Resources\cm.png" />
+    <None Include="Resources\skype.png" />
+    <None Include="Resources\mail.png" />
     <None Include="Resources\update.png" />
     <None Include="Resources\printer.png" />
     <None Include="Resources\save.png" />

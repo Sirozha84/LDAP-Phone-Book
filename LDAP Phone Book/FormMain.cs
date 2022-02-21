@@ -36,11 +36,6 @@ namespace LDAP_Phone_Book
             
             Refresh();
         }
-        private void FormMain_Shown(object sender, EventArgs e) 
-        {
-            if (Properties.Settings.Default.ShowTips == 0)
-               menuNews_Click(null, null);
-        }
 
         void Refresh()
         {
@@ -107,8 +102,6 @@ namespace LDAP_Phone_Book
                 cmenuCopyW.Enabled = user.phoneG != "";
                 cmenuCopyM.Enabled = user.phoneM != "";
                 cmenuCopyMail.Enabled = user.mail != "";
-                
-                menuSendReport.Text = "Сообщить об ошибке";
             }
             else
             {
@@ -123,8 +116,6 @@ namespace LDAP_Phone_Book
                 cmenuCopyW.Enabled = false;
                 cmenuCopyM.Enabled = false;
                 cmenuCopyMail.Enabled = false;
-                
-                menuSendReport.Text = "Сообщить о новом контакте";
             }
         }
 
@@ -165,29 +156,17 @@ namespace LDAP_Phone_Book
             if (form.ShowDialog() == DialogResult.OK) Refresh();
         }
 
-        private void menuNews_Click(object sender, EventArgs e)
-        {
-            FormNews form = new FormNews();
-            form.ShowDialog();
-            Properties.Settings.Default.ShowTips = 1;
-            Properties.Settings.Default.Save();
-        }
-
         private void menuAbout_Click(object sender, EventArgs e)
         {
             FormAbout form = new FormAbout();
             form.ShowDialog();
         }
-
-
         #endregion
 
         #region Панель инструментов
-
         private void toolListComp_SelectedIndexChanged(object sender, EventArgs e) { Redraw(); }
         private void toolListDep_SelectedIndexChanged(object sender, EventArgs e) { Redraw(); }
         private void toolTextSearch_Click(object sender, EventArgs e) { Redraw(); }
-
         private void toolTextSearch_TextChanged(object sender, EventArgs e)
         {
             Redraw();
@@ -201,7 +180,6 @@ namespace LDAP_Phone_Book
             isProgramUpdate = false;
             Redraw();
         }
-
         #endregion
 
         #region Контекстное меню
@@ -210,6 +188,7 @@ namespace LDAP_Phone_Book
             Contact user = (Contact)listViewBook.SelectedItems[0].Tag;
             System.Diagnostics.Process.Start("mailto:" + user.mail);
         }
+
         private void cmenuConnectToPC_Click(object sender, EventArgs e)
         {
             Contact user = (Contact)listViewBook.SelectedItems[0].Tag;
@@ -257,41 +236,35 @@ namespace LDAP_Phone_Book
                 MessageBox.Show("Произошла непредвиденная ошибка.");
             }
         }
+
         private void CopyName(object sender, EventArgs e)
         {
             Contact user = (Contact)listViewBook.SelectedItems[0].Tag;
             Clipboard.SetText(user.name);
         }
+
         private void CopyW(object sender, EventArgs e)
         {
             Contact user = (Contact)listViewBook.SelectedItems[0].Tag;
             Clipboard.SetText(user.phoneG);
         }
+
         private void CopyG(object sender, EventArgs e)
         {
             Contact user = (Contact)listViewBook.SelectedItems[0].Tag;
             Clipboard.SetText(user.phoneW);
         }
+
         private void CopyM(object sender, EventArgs e)
         {
             Contact user = (Contact)listViewBook.SelectedItems[0].Tag;
             Clipboard.SetText(user.phoneM);
         }
+
         private void CopyMail(object sender, EventArgs e)
         {
             Contact user = (Contact)listViewBook.SelectedItems[0].Tag;
             Clipboard.SetText(user.mail);
-        }
-        private void SendReport(object sender, EventArgs e)
-        {
-            string name = "";
-            if (listViewBook.SelectedItems.Count > 0)
-            {
-                Contact user = (Contact)listViewBook.SelectedItems[0].Tag;
-                name = user.name;
-            }
-            FormReport form = new FormReport(name);
-            form.ShowDialog();
         }
         #endregion
 

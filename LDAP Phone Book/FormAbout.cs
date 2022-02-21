@@ -8,11 +8,18 @@ namespace LDAP_Phone_Book
         public FormAbout()
         {
             InitializeComponent();
-            
+
+            labelVersion.Text = "Версия: " + Program.version;
+
             Font fontR = new Font(history.Font.FontFamily, history.Font.Size, FontStyle.Regular);
             Font fontB = new Font(history.Font.FontFamily, history.Font.Size, FontStyle.Bold);
 
-            labelVersion.Text = "Версия: " + Program.version;
+            history.SelectionFont = fontB;
+            history.AppendText("Версия 2.1 (21.02.2022)\n\n");
+            history.SelectionFont = fontR;
+            history.AppendText("• Иконки в контекстном меню\n" +
+                "• Убрана возможность сообщать об ошибке как неиспользуемое\n"+
+                "• Убрано окно с новостями обновлений как неиспользуемое\n\n");
 
             history.SelectionFont = fontB;
             history.AppendText("Версия 2.0 (20.07.2021)\n\n");
